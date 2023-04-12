@@ -1,0 +1,19 @@
+<div id="weather">
+    <div class="weather-widget">
+        <header>
+        <h6>{{ orlandoWeather.name }} Weather</h6>
+        <P>(<I>Current Conditions</I>)</P>
+        </header>
+        <div class="daily-weather">
+            <div class="feels-like"><span [ngStyle]="{'color': iconColor}" class="material-symbols-outlined skiesIcon">{{iconType}}</span>  <span>{{ feelsLikeTemp | number: '1.1-1' }}&deg;</span></div>
+            <div class="high-low">
+                <span class="low">{{ min_temp | number: '1.1-1' }}&deg;</span>
+                <span class="high">{{ max_temp | number: '1.1-1' }}&deg;</span>
+            </div>
+            <div class="conditions"><span class="humid">Humidity: {{ weather.humidity }}&#37;</span> <span class="wind">Wind: {{ wind.speed }}</span></div>
+        </div>
+    </div>
+  </div>
+  
+
+

@@ -1,0 +1,96 @@
+@import'../_variables.scss';
+
+#main-content {
+   
+    h1 {
+        color: $d-dark;
+    }
+}
+.mat-card {
+    min-width: 775px;
+}
+#aside-container {
+    width: 350px;
+    // background-color: #673ab7;
+    padding: 0 1rem;
+    z-index: -1;
+}
+.go-dis-card {
+    margin-bottom: 2rem;
+    width: 100%;
+    border-radius: 0 !important;
+    border-bottom: 3px solid $d-dark;
+    border-radius: 3px;
+
+    .mat-card-header {
+        color: $p-dark;
+    }
+
+    .a-button {
+        background-color: $d-dark;
+        color: #fff;
+    }
+
+    .mat-fab {
+        float: right;
+        top: -59px;
+        right: 3rem;
+        background-color: $d-dark;
+        color: #fff;
+    }
+
+    // .example-container {
+    //     display: flex;
+    //     flex-direction: column;
+    //     justify-content: space-around;
+    // }
+
+    .example-container > * {
+        width: 100%;
+    }
+
+    .example-right-align {
+        text-align: right;
+    }
+
+    input.example-right-align::-webkit-outer-spin-button,
+    input.example-right-align::-webkit-inner-spin-button {
+        display: none;
+    }
+
+    input.example-right-align {
+        appearance: textfield;
+        -moz-appearance: textfield;
+    }
+
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+        background-color: $d-light;
+    }
+
+    .primary {
+        background-color: $d-primary;
+        color: #fff;
+    }
+
+
+}
+@media(max-width: '720px') {
+    .mat-card {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 3.5rem;
+    box-sizing: border-box;
+    }
+}
+
+@media only screen 
+and (device-width : 375px) 
+and (device-height : 812px) 
+and (-webkit-device-pixel-ratio : 3) {
+    .mat-card {
+        width: 100%;
+        min-width: 0;
+        margin-bottom: 3.5rem;
+        box-sizing: border-box;
+        }
+}

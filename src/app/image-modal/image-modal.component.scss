@@ -1,0 +1,30 @@
+.img-list {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 5rem;
+    width: 95%;
+    ul {
+        list-style-type: none;
+        li {
+         font-size: .75rem;
+         margin-right: .5rem;
+        }
+    }
+}
+
+.mat-form-field-infix {
+    width: 350px;
+}
+
+.mat-radio-label-content {
+    -webkit-user-select: auto;
+    user-select: auto;
+    display: inline-block;
+    order: 0;
+    line-height: inherit;
+    padding-left: 8px;
+    padding-right: 0;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,40 @@
+<mat-sidenav-container id="mat-sidenav-container" class="example-container">
+    <mat-sidenav class="example-sidenav mat-elevation-z10" #sidenav mode="side" [opened]="!isScreenSmall()" 
+                                                                                [mode]="isScreenSmall() ? 'over': 'side'">
+       <app-sidenav-toolbar></app-sidenav-toolbar>
+       <mat-list role="list" class="navigation">
+           <mat-list-item role="listitem"><mat-icon>home</mat-icon> <a mat-stroked-button routerLink="card" routerLinkActive="active"> Home</a></mat-list-item>
+           <mat-list-item role="listitem"><mat-icon>face</mat-icon><a mat-stroked-button routerLink="about" routerLinkActive="active"> About Us</a></mat-list-item>
+           <mat-list-item role="listitem"><mat-icon>contact_mail</mat-icon><a mat-stroked-button routerLink="contact" routerLinkActive="active"> Contact Us</a></mat-list-item>
+       </mat-list>
+        <app-news-feed></app-news-feed>
+    </mat-sidenav>
+ 
+    <mat-sidenav-content id="mat-sidenav-content">
+        <app-toolbar (toggleSidenav)="sidenav.toggle()" (goToAdmin)="onAdmin()" [navTrue]="isScreenSmall()"></app-toolbar>
+        <app-gdb-hero></app-gdb-hero>
+       
+        <div id="main-content" class="flex-container">
+           <mat-spinner *ngIf="!isLoaded"></mat-spinner>
+           <div id="main-wrapper" *ngIf="cardData">
+               <router-outlet></router-outlet>
+           </div>
+          
+            <aside id="aside-container" class="fade-in">
+                <app-side-bar class="bio-card"></app-side-bar>
+                <div class="weather-app mat-elevation-z13">
+                    <app-orlando-weather></app-orlando-weather>
+                </div>
+                
+                <!--<iframe id="youtube-video" class="mat-elevation-z13" width="100%" height="240" src="https://www.youtube-nocookie.com/embed/B0BnJlZEuqA?mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                <div id="youtube-video">
+                    <app-video-player></app-video-player>
+                </div>
+                    
+                
+
+            </aside>
+        </div>
+        <app-footer></app-footer>
+    </mat-sidenav-content>
+</mat-sidenav-container>

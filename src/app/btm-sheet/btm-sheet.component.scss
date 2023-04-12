@@ -1,0 +1,14 @@
+@import'../_variables.scss';
+
+a {
+    cursor: pointer;
+}
+
+.mat-bottom-sheet-container h1, .mat-bottom-sheet-container h2 {
+    color: $a-dark;
+}
+
+.mat-bottom-sheet-container-large {
+    min-width: 512px;
+    max-width: calc(100vw - 852px);
+    }

@@ -1,0 +1,81 @@
+#weather {
+    background-image: linear-gradient(to right top, #266b95, #1e6089, #15557e, #0a4a72, #004067);
+    height: 15rem;
+    min-width: 350px;
+    color: honeydew;
+    padding: 40px;
+    box-sizing: border-box;
+    border-bottom: 3px solid #eaf0f3;
+    border-radius: 3px;
+
+    .weather-widget {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: sans-serif;
+      
+        header {
+          text-align: center;
+          h6 {
+            font-size: 1.5rem;
+            margin: 0;
+          }
+        }
+      
+        .daily-weather {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      
+          .feels-like {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            height: 40px;
+            .skiesIcon {
+                font-size: 40px;
+                height: 40px;
+                width: 40px;
+                margin-right: 10px;
+              }
+            span {
+              font-weight: bold;
+              font-size: 25px;
+            }
+          }
+      
+          .high-low {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+      
+            .low, .high {
+              font-weight: bold;
+            }
+            .high {
+                color: rgb(248, 205, 96);
+            }
+            .low {
+                color: rgb(20, 190, 220);
+            }
+          }
+
+          .conditions {
+            display: flex;
+            justify-content: space-between;
+            width: 110%;
+            margin-top: 10px;
+
+            .humid {
+              align-items: start;
+              color: honeydew;
+            }
+            .wind{
+              align-items: end;
+              color: honeydew;
+            }
+          }
+        }
+      }
+      
+}

@@ -1,0 +1,57 @@
+@import'../_variables.scss';
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+
+.flrx-container-col {
+    width: 800px;
+}
+
+
+.mat-card {
+    border-bottom: 3px solid $d-dark;
+    border-radius: 3px;
+    //width: 100%;
+    //min-width: 775px;
+    margin-bottom: 50px;
+}
+
+.example-container > * {
+    width: 100%;
+}
+
+h1 {
+    color: $d-dark;
+}
+
+.mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 100%;
+}
+
+@media(max-width: '720px') {
+    .mat-card {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 3.5rem;
+    box-sizing: border-box;
+    }
+}
+
+@media only screen 
+and (device-width : 375px) 
+and (device-height : 812px) 
+and (-webkit-device-pixel-ratio : 3) {
+    .mat-card {
+        width: 100%;
+        min-width: 0;
+        margin-bottom: 3.5rem;
+        box-sizing: border-box;
+        }
+}

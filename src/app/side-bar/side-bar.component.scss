@@ -1,0 +1,65 @@
+@import'../_variables.scss';
+
+.mat-card {
+    border-bottom: 3px solid $d-dark;
+}
+.sidebar-card {
+
+    .mat-card-header {
+        background-image: url('../../assets/img/showtime.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 214px;
+        position: relative;
+        z-index: 0;
+
+        &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 214px;
+            background-color: $d-dark;
+            background-image: radial-gradient(circle, #266b95, #1e6089, #15557e, #0a4a72, #004067);
+            opacity: 0.75;
+            display: block;
+            content: " ";
+        }
+
+        .mat-card-avatar {
+            background-image: url('../../assets/img/profile_img.png');
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            height: 80px;
+            width: 80px;
+            z-index: 10;
+            top: 175px;
+            left: 37.5%;
+            border: 5px solid #fff;
+        }
+
+        .mat-card-header-text {
+            z-index: 10 !important;
+            color: #fff !important;
+            text-align: center !important;
+            position: relative !important;
+            margin: 0 auto;
+        }
+    }
+}
+@media(max-width: '1024px') {
+    .mat-card-header-text {
+        margin: 0 auto;
+    }
+        .sidebar-card .mat-card-header .mat-card-avatar {
+            position: absolute;
+            height: 80px;
+            width: 80px;
+            z-index: 10;
+            top: 175px;
+            left: 43%;
+            border: 5px solid #fff;
+        }
+
+}

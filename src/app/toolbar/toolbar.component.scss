@@ -1,0 +1,107 @@
+@import'../_variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Nothing+You+Could+Do&display=swap');
+.go-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: $shadow;
+    z-index: 5;
+    background-color: $d-dark;
+    background-image: linear-gradient(to right top, #266b95, #1e6089, #15557e, #0a4a72, #004067);
+    color: #fff;
+
+    .mat-icon.mat-icon.notranslate.gdb-hamburger.material-icons.mat-ligature-font.mat-icon-no-color {
+        margin-left: -4%;
+    }
+
+    #goofy-icon {
+        font-size: 12px;
+    }
+
+    .mat-fab {
+        background-color: red;
+        background-image: url(../../assets/img/mini_pattern.png);
+        background-size: 35px;
+        background-position: top;
+        color: #fff;
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
+
+    #brand {
+        font-weight: bold;
+
+        .unique-logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+    }
+
+    .toolbar-font {
+        font-family: 'Nothing You Could Do', cursive;
+        font-size: 1.25rem;
+        display: flex;
+        justify-content: space-around;
+        margin-left: 5%;
+    }
+
+    .mat-menu-content {
+        background-color: $d-light;
+        color: #fff;
+
+        button.mat-menu-item {
+            color: #fff;
+            outline-color: black;
+            outline: 1px;
+        }
+    }
+
+  /*  .gdb-hambuger {
+        display: none;
+    } */
+
+    .example-icon {
+        padding: 0 14px;
+    }
+
+    .example-spacer {
+        flex: 1 1 auto;
+    }
+
+    .gdb-flex-menu {
+        flex: 1 auto;
+    }
+
+    .toggle-sidebar {
+        display: none;
+    }
+
+    .two-rems {
+        margin-left: 2rem;
+    }
+
+    @media(max-width: '720px') {
+        .sidebar-toggle, .gdb-hamburger  {
+            display: flex;
+            margin-left: 20%;
+        }
+
+        #goofy-icon, .shield-icon {
+            display: none;
+        }
+    }
+    @media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        #goofy-icon, .toolbar-font, .shield-icon {
+            display: none;
+        }
+
+        .sidebar-toggle, .gdb-hamburger  {
+            display: flex;
+            margin-left: 20%;
+        }
+     }
+     
+}

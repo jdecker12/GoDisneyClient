@@ -1,0 +1,108 @@
+@import'../_variables.scss';
+
+#gdb-footer {
+    min-height: 250px;
+    width: 100%;
+    background-color: $dark-gray-footer;
+    background-image: $after-gradient1;
+    box-shadow: $shadow-footer;
+    //z-index: 5;
+    position: relative;
+    padding: 2rem 0;
+
+    h3 {
+        color: $disney-gold;
+        text-align: left;
+        text-decoration: double underline;
+        /* filter: drop-shadow(4px 6px 8px black); */
+        text-rendering: optimizeLegibility;
+    }
+
+    .footer-logo {
+        width: 130px;
+        transform: rotate(-4deg);
+        position: relative;
+        top: -10px;
+    }
+
+    #mission {
+        border: solid 1px $disney-gold;
+        padding: 7px;
+        width: 200px;
+        position: relative;
+        top: 40px;
+        text-align: left;
+    }
+
+    .footer-logo-font {
+        font-family: 'Nothing You Could Do', cursive;
+        margin-left: 33px;
+        margin-top: -15px;
+    }
+
+    .mat-icon {
+        margin-right: 10px;
+    }
+
+    .gdb-stripe {
+        z-index: 0;
+        background-color: $p-dark;
+        width: 100%;
+        box-shadow: $shadow-footer;
+        position: relative;
+        top: -9px;
+        height: 10px;
+    }
+
+    .div1 {
+        min-width: 200px;
+        min-height: 200px;
+        color: #fff;
+        text-align: center;
+
+        .mat-list-item {
+            color: #fff;
+            font-size: small;
+
+            a {
+                color: #fff;
+            }
+
+            a.active {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    p.gdb-copyright {
+        color: #fff;
+        font-weight: 100;
+        margin-top: 35px;
+    }
+    @media(max-width: '720px') {
+        padding: 2rem;
+        .div1 {
+            width: 100%;
+        }
+
+        p.gdb-copyright{
+            margin-top: 95px;
+            margin-left: -68px;
+            font-size: .75rem;
+        }
+    }
+    @media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        padding: 2rem;
+        .div1 {
+            width: 100%;
+        }
+        p.gdb-copyright{
+            margin-top: 95px;
+            margin-left: -68px;
+            font-size: .75rem;
+        }
+     }
+}

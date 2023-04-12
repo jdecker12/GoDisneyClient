@@ -1,0 +1,64 @@
+@import'../../_variables.scss';
+
+// #main-content {
+//     // margin: $gutters-main;
+//     float: right;
+
+//     h1 {
+//         color: $d-dark;
+//     }
+// }
+
+// #aside-container {
+//     width: 350px;
+//     // background-color: #673ab7;
+//     padding: 0 1rem;
+//     z-index: 0;
+// }
+
+
+.go-dis-card {
+    margin-bottom: 4rem;
+    max-width: 770px;
+    border-bottom: 3px solid $d-dark;
+    border-radius: 3px;
+    position: relative;
+    //left: -1036px;
+    //padding: 0;
+
+    .mat-card-header {
+        color: $d-dark;
+    }
+
+    .go-dis-card.mat-card {
+        //padding: 0px 18px 23px;
+        padding: 0;
+        img {
+            width: 100%;
+        }
+    }
+
+    .mat-card-content a {
+        color: $d-dark;
+        text-decoration: underline;
+    }
+
+    .mat-fab {
+        float: right;
+        top: -59px;
+        right: 3rem;
+        background-color: $d-light;
+        color: #000000;
+    }
+
+    .mat-raised-button {
+        float: right;
+        top: -40px;
+        right: 3rem;
+        background-color: $d-light;
+        color: #fff;
+    }
+
+
+}
+

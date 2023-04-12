@@ -1,0 +1,399 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/cdk/overlay-prebuilt.css';
+@import 'app/_variables.scss';
+
+html, body {
+    height: 100%;
+    font-size: 17px;
+    font-family: 'Roboto', sans-serif;
+    /* width */
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 5px;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: $ds-dark;
+        border-radius: 5px;
+    }
+
+
+    .flex-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+    }
+
+    .flex-container-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .half-spacer {
+        flex: .25 1 auto;
+    }
+
+    .mat-accordion .mat-expansion-panel {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+    .mat-accordion .mat-expansion-panel:last-of-type {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+
+    .sm-spacer {
+        flex: $sm-spacer;
+    }
+
+    div#news-feed {
+        .mat-expansion-panel-body {
+            padding: 0 24px 16px;
+            background-color: #fff;
+            color: #222;
+
+            img {
+                max-width: 200px;
+                margin-top: 25px;
+            }
+        }
+    }
+
+    #sidebar-card {
+        margin-bottom: 60px;
+
+        .mat-card-header-text {
+            z-index: 10 !important;
+            color: #fff !important;
+            text-align: center !important;
+            position: relative !important;
+            top: 2rem;
+            margin: 0 auto;
+
+            .mat-card-subtitle {
+                color: #fff;
+            }
+
+            .mat-card-content p {
+                margin-top: 16px;
+            }
+        }
+    }
+
+    .mat-fab.mat-accent {
+        background-color: $as-dark;
+    }
+
+    .matdrawer-content.mat-sidenav-content {
+        &:after {
+            position: absolute;
+            top: 297px;
+            display: block;
+            left: 0;
+            width: 100%;
+            height: 340px;
+            background-color: $purple;
+            z-index: -10;
+            content: " ";
+        }
+    }
+
+    .mat-input-element {
+        font-size: .85rem;
+        color: $d-dark;
+    }
+
+    .mat-form-field.mat-focused .mat-form-field-ripple {
+        background-color: #007ac1;
+    }
+
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+        background-color: $d-light;
+    }
+
+    .a-button {
+        background-color: $d-dark;
+        color: #fff;
+    }
+
+    a:link {
+        text-decoration: none;
+    }
+
+    .mat-card-actions {
+        position: relative;
+        margin-top: 50px;
+    }
+
+    .admin.mat-list-base .mat-list-item .mat-list-item-content, .admin.mat-list-base .mat-list-option .mat-list-item-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 16px;
+        position: relative;
+        height: inherit;
+        display: inline;
+        color: #007ac1;
+    }
+
+    button.mat-mini-fab.mat-accent {
+        background-color: $as-light;
+        color: #fff;
+    }
+    .mat-stroked-button .mat-button-wrapper>* {
+        color: $d-dark;
+    }
+    .mat-drawer {
+        color: #fff;
+    }
+
+    .mat-drawer-container {
+        background-color: #fafafa;
+        color: rgba(0,0,0,.87);
+        background-image: radial-gradient(circle, #ffffff, #eeeeee, #dddddd, #cccccc, #bcbcbc);
+    }
+    .mat-drawer-content {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .mat-menu-content {
+        background-color:$ds-secondary;
+        color: #000000;
+    }
+
+    .mat-expansion-panel-header-title {
+        color: #fff;
+    }
+
+    .mat-expansion-indicator::after {
+        border-style: solid;
+        border-width: 0 2px 2px 0;
+        content: '';
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        vertical-align: middle;
+        color: #fff;
+    }
+
+    .mat-bottom-sheet-container h1, .mat-bottom-sheet-container h2 {
+        color: $d-dark;
+    }
+
+    .mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+        background-color: $d-light;
+    }
+
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+        border-color: $d-light;
+    }
+
+    .mat-accordion {
+        background-color: #aa00c7;
+        color: #fff;
+
+        .mat-expansion-panel {
+            background-color: #aa00c7;
+            color: #fff !important;
+
+            .mat-expansion-panel-header-title {
+                color: #fff;
+            }
+
+            span.mat-content {
+                color: #fff;
+
+                .mat-panel-title {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .gdb-nav-toolbar {
+        .mat-fab .mat-button-wrapper {
+            padding: 0;
+            display: inline-block;
+            line-height: 24px;
+        }
+    }
+
+    .mat-bottom-sheet-container-large {
+        min-width: 512px;
+        max-width: calc(100vw - 852px);
+    }
+    /////////// fade in animation
+    .fade-in {
+        animation: fadeIn ease 1s;
+        -webkit-animation: fadeIn ease 1s;
+        -moz-animation: fadeIn ease 1s;
+        -o-animation: fadeIn ease 1s;
+        -ms-animation: fadeIn ease 1s;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-moz-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-o-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-ms-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .gold-gradient { /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffe1a8+0,ead55b+17,ffc251+50,ead560+84,efe5a0+100 */
+        background: rgb(255,225,168); /* Old browsers */
+        background: -moz-radial-gradient(center, ellipse cover, rgba(255,225,168,1) 0%, rgba(234,213,91,1) 17%, rgba(255,194,81,1) 50%, rgba(234,213,96,1) 84%, rgba(239,229,160,1) 100%); /* FF3.6-15 */
+        background: -webkit-radial-gradient(center, ellipse cover, rgba(255,225,168,1) 0%,rgba(234,213,91,1) 17%,rgba(255,194,81,1) 50%,rgba(234,213,96,1) 84%,rgba(239,229,160,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: radial-gradient(ellipse at center, rgba(255,225,168,1) 0%,rgba(234,213,91,1) 17%,rgba(255,194,81,1) 50%,rgba(234,213,96,1) 84%,rgba(239,229,160,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe1a8', endColorstr='#efe5a0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+    .mat-progress-spinner circle, .mat-spinner circle {
+        stroke: #084870;
+    }
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-form-field-infix {
+    width: 350px !important;
+}
+////////// media queries ////////
+
+@media(max-width: '720px') {
+    #goofy-icon, .toolbar-font, .shield-icon {
+        display: none;
+    }
+    .sidebar-toggle, .gdb-hamburger  {
+        display: flex;
+        margin-left: 20%;
+    }
+}
+
+
+//iphone8+
+@media only screen 
+and (width : 375px) 
+and (height : 812px) 
+and (-webkit-device-pixel-ratio : 3) {
+    #goofy-icon, .toolbar-font, .shield-icon {
+        display: none;
+    }
+
+    .sidebar-toggle, .gdb-hamburger  {
+        display: flex;
+        margin-left: 20%;
+    }
+    #aside-container {
+        width: 76%;
+    }
+    .sidebar-card .mat-card-header .mat-card-avatar {
+        position: relative;
+        height: 80px;
+        width: 80px;
+        z-index: 10;
+        top: 175px;
+        left: 320px;
+        border: 5px solid #fff;
+    }
+}
+    @media only screen 
+    and (min-width : 375px) 
+    and (max-width : 812px)
+    and (-webkit-pixel-ratio : 3) { 
+        #goofy-icon, .toolbar-font, .shield-icon {
+            display: none;
+        }
+    
+        .sidebar-toggle, .gdb-hamburger  {
+            display: flex;
+            margin-left: 20%;
+        }
+        #aside-container {
+            width: 76%;
+        }
+        .sidebar-card .mat-card-header .mat-card-avatar {
+            position: relative;
+            height: 80px;
+            width: 80px;
+            z-index: 10;
+            top: 175px;
+            left: 320px;
+            border: 5px solid #fff;
+        }
+    }
+
+    ///ipad
+    @media only screen 
+    and (min-width : 768px) 
+    and (max-width : 1024px)
+    and (-webkit-min-device-pixel-ratio: 1)  { 
+    #aside-container {
+        width: 76%;
+    }
+    .sidebar-card .mat-card-header .mat-card-avatar {
+        position: relative;
+        height: 80px;
+        width: 80px;
+        z-index: 10;
+        top: 175px;
+        left: 320px;
+        border: 5px solid #fff;
+    }
+    
+ }
+

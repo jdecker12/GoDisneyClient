@@ -1,0 +1,28 @@
+<div class="flex-container">
+    <div class="flex-container-col">
+        <mat-card class="go-dis-card mat-elevation-z13 fade-in">
+            <div *ngIf="card.cardImg3; else defaultImage">
+                <img mat-card-image src="../../../assets/img/{{card.cardImg3}}.jpg" [alt]="card.cardTitle">
+            </div>
+            <ng-template #defaultImage>
+                <img mat-card-image src="../../../assets/img/{{card.cardImg}}.jpg" [alt]="card.cardTitle">
+            </ng-template>
+            <mat-card-header class="card-header" color="Secondary">
+                <mat-icon>{{card.cardIcon}}</mat-icon>
+                <mat-card-title>{{card.cardTitle}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div *ngFor="let p of card.cardContents">
+                    <p>{{p.paraOne}}</p>
+                    <p>{{p.paraTwo}}</p>
+                    <p>{{p.paraThree}}</p>
+                    <p>{{p.paraFour}}</p>
+                </div>
+                <a href="https://{{card.cardLink}}" target="_blank">{{card.cardLinkName}}</a>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-fab [routerLink]="['/card']"><mat-icon>add</mat-icon></button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

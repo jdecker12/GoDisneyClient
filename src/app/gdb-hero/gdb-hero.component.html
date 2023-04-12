@@ -1,0 +1,9 @@
+<div id="gdb-hero" class="flex-container mat-elevation-z13">
+    <div *ngIf="cards$ | async as cards">
+        <div>
+            <ul class="fade-in">
+                <li *ngFor="let c of cards; index as i"><a [routerLink]="['/', c.cardTitle]" routerLinkActive="active" id="title-{{ i + 1 }}"><span id="clr-change{{i + 1}}"> <button mat-mini-fab><mat-icon>{{ c.cardIcon }} </mat-icon></button></span> {{ truncEight(c.cardTitle) }}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

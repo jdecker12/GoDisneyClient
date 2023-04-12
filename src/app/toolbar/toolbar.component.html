@@ -1,0 +1,25 @@
+<mat-toolbar class="go-toolbar">
+    <mat-toolbar-row>
+        <span><button mat-fab (click)="buttonText()" mat-stroked-button [matMenuTriggerFor]="menu"></button></span><span id="brand"> go<span class="unique-logo">Disney</span>blog</span>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="goToAdmin.emit()">{{update}}</button>
+        </mat-menu>
+        <span class="sm-spacer"></span>
+        <mat-icon class="gdb-hamburger" (click)="toggleSidenav.emit()">menu</mat-icon>
+
+        <!--<span class="gdb-flex-menu"><app-gdb-menu ></app-gdb-menu></span>-->
+        <!-- <span class="half-spacer"></span>
+        <span class="half-spacer"></span>
+        <span class="half-spacer"></span> -->
+        <!-- <span class="toolbar-font">Go Disney Blog!</span> -->
+
+        <span class="example-spacer"></span>
+        <!-- <button mat-button (click)="buttonText()" mat-stroked-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="goToAdmin.emit()">{{update}}</button>
+        </mat-menu> -->
+        <span class="two-rems"></span>
+        <span id="goofy-icon">Not affiliated just a fan</span><mat-icon class="shield-icon">verified_user</mat-icon>
+    </mat-toolbar-row>
+</mat-toolbar>
+ 

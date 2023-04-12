@@ -1,0 +1,65 @@
+@import'../../_variables.scss';
+
+.go-dis-card {
+    margin-bottom: 4rem;
+    max-width: 770px;
+    border-bottom: 3px solid $d-dark;
+    border-radius: 3px;
+    position: relative;
+    left: -1036px;
+    //padding: 0;
+
+    .mat-card-header {
+        color: $d-dark;
+    }
+
+    .go-dis-card.mat-card {
+        //padding: 0px 18px 23px;
+        padding: 0;
+        img {
+            width: 100%;
+        }
+    }
+
+    .mat-card-content a {
+        color: $d-dark;
+        text-decoration: underline;
+    }
+
+    .mat-fab {
+        float: right;
+        top: -59px;
+        right: 3rem;
+        background-color: $d-light;
+        color: #000000;
+    }
+
+    .mat-raised-button {
+        float: right;
+        top: -40px;
+        right: 3rem;
+        background-color: $d-light;
+        color: #fff;
+    }
+
+
+}
+
+
+.first-card {
+    left: 0;
+}
+
+.scroll-animation {
+    animation: animateCard .85s forwards;
+}
+
+@keyframes animateCard {
+    from {
+        left: -1036px;
+    }
+
+    to {
+        left: 0px;
+    }
+}

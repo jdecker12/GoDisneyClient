@@ -1,0 +1,120 @@
+
+    <mat-card class="go-dis-card mat-elevation-z13 fade-in">
+        <mat-card-header>
+            <mat-card-title>Content Builder <mat-icon>create</mat-icon></mat-card-title>
+        </mat-card-header>
+        <form  [formGroup]="updateCardForm" (submit)="(isChecked == 'update') ? updateFormData(updateCardForm.value) : saveFormData(updateCardForm.value)">
+
+            <mat-card-content>
+                <h3>What would you like to do?</h3>
+                <div class="example-container">
+                <mat-radio-group formControlName="radioGroup" aria-label="Select an option" (change)="getRadioVal()">
+                    <mat-radio-button (click)="clearForm()" value="new">Create New Card</mat-radio-button>
+                    <mat-radio-button value="update">Update Existing Card</mat-radio-button>
+                    <mat-radio-button value="delete">Delete Existing Card</mat-radio-button>
+                </mat-radio-group>
+                </div>
+                <h3>Where would you like to see it?</h3>
+                <div class="example-container">
+                    <mat-radio-group formControlName="cardCategory" aria-label="Select an option" (change)="getRadioVal()">
+                        <mat-radio-button value="Main">Main</mat-radio-button>
+                        <mat-radio-button value="News">News</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <div *ngIf="isChecked == 'update' || isChecked == 'delete'">
+                    <h3>Select a Card to Update</h3>
+                    <div class="card-list">
+
+                        <mat-list role="list" class="select-card flex-container">
+                            <mat-list-item *ngFor="let card of cards" role="listitem">
+                                <a mat-button mat-raised-button (click)="selectName(card.cardTitle)" class="a-button fade-in">{{card.cardTitle}}</a>
+                            </mat-list-item>
+                        </mat-list>
+                        <div *ngIf="isChecked == 'delete' && selected" class="flex-container delete-button">
+                            <a mat-button mat-raised-button class="a-button fade-in" (click)="deleteSelectCard()">Delete Card</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <mat-form-field>
+                        <input matInput placeholder="Card Title" name="cardTitle" formControlName="cardTitle" id="cardTitle" required>
+                    </mat-form-field>
+                </div>
+
+                <div class="example-container">
+                    <div *ngIf="selected">
+                        <div class="form-image"><img mat-card-image src="../../assets/img/{{card.cardImg}}.jpg"></div>
+                    </div>
+                    <mat-form-field>
+                        <input matInput placeholder="Card Image" name="cardImg" formControlName="cardImg" id="cardImg" required>
+                    </mat-form-field>
+                </div>
+
+                <div class="example-container">
+                    <div *ngIf="selected">
+                        <div class="form-image"><img mat-card-image src="../../assets/img/{{card.cardImg3}}.jpg"></div>
+                    </div>
+                    <mat-form-field>
+                        <input matInput placeholder="Secondary Image" name="cardImg3" formControlName="cardImg3" id="cardImg3">
+                    </mat-form-field>
+                </div>
+
+                <div class="example-container">
+                    <div *ngIf="selected" class="form-image"><mat-icon>{{card.cardIcon}}</mat-icon></div>
+                    <mat-form-field>
+                        <input matInput placeholder="Card Icon" name="cardIcon" formControlName="cardIcon" id="cardIcon" required>
+                    </mat-form-field>
+                </div>
+                <div class="example-container">
+                    <mat-form-field>
+                        <input matInput placeholder="Card link" name="cardLink" formControlName="cardLink" id="cardLink" required>
+                    </mat-form-field>
+                </div>
+
+                <div class="example-container">
+                    <mat-form-field>
+                        <input matInput placeholder="Card Link Name" name="cardLinkName" formControlName="cardLinkName" id="cardLinkName" required>
+                    </mat-form-field>
+                </div>
+                <div formGroupName="cardContents">
+                    <div class="example-container">
+                        <mat-form-field>
+                            <input matInput placeholder="Paragraph One" name="paraOne" formControlName="paraOne" id="paraOne" required>
+
+                        </mat-form-field>
+                    </div>
+                    <div class="example-container">
+                        <mat-form-field>
+                            <input matInput placeholder="Paragraph Two" name="paraTwo" formControlName="paraTwo" id="paraTwo">
+
+
+                        </mat-form-field>
+                    </div>
+                    <div class="example-container">
+                        <mat-form-field>
+                            <input matInput placeholder="Paragraph Three" name="paraThree" formControlName="paraThree" id="paraThree">
+                        </mat-form-field>
+                    </div>
+                    <div class="example-container">
+                        <mat-form-field>
+                            <input matInput placeholder="Paragraph Four" name="paraFour" formControlName="paraFour" id="paraFour">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card-content>
+                <mat-card-actions>
+                    <button class="a-button" [disabled]="updateCardForm.invalid" mat-button mat-raised-button type="submit">Submit</button>
+                    <button mat-button mat-raised-button (click)="cancel()">Cancel</button>
+                </mat-card-actions>
+            </form>
+            <hr>
+            <h3>Helper Section</h3>
+            <div class="example-container ">
+                <button mat-stroked-button type="button"><a href="https://material.io/resources/icons/?style=baseline" target="_blank">Material Icons</a></button>
+            </div>
+            <br>
+            <h3>Available Images</h3>
+           <app-image-modal [images]="images" (selectImg)="onSelected($event)"></app-image-modal> 
+</mat-card>

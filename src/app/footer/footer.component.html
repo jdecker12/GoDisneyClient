@@ -1,0 +1,35 @@
+<footer id="gdb-footer">
+    <div class="flex-container">
+        <div class="div1">
+            <mat-list role="list">
+                <h3><mat-icon>explore</mat-icon> Navigation</h3>
+                <div *ngIf="card$ | async as card">
+                    <mat-list-item role="listitem" *ngFor="let c of card"><mat-icon>{{c.cardIcon}}</mat-icon><a [routerLink]="['/', c.cardTitle]" routerLinkActive="active"> {{c.cardTitle}}</a></mat-list-item>
+                </div>
+            </mat-list>
+        </div>
+        <div class="div1">
+            <mat-list role="list">
+                <h3><mat-icon>policy</mat-icon> Policy</h3>
+                <mat-list-item role="listitem"><mat-icon>map</mat-icon> Site Map</mat-list-item>
+                <mat-list-item role="listitem" id="privacy"><mat-icon>share</mat-icon> <app-btm-sheet [privacy]="privacy"></app-btm-sheet></mat-list-item>
+                <mat-list-item role="listitem" id="terms"><mat-icon>gavel</mat-icon> <app-btm-sheet [terms]="terms"></app-btm-sheet></mat-list-item>
+            </mat-list>
+        </div>
+        <div class="div1">
+            <mat-list role="list">
+                <h3><mat-icon>public</mat-icon> Our Mission</h3>
+                <mat-list-item role="listitem"><img class="footer-logo" src="../../assets/img/a-glasses.png" /></mat-list-item>
+                <mat-list-item role="listitem" class="footer-logo-font">Go Disney Blog!</mat-list-item>
+                <mat-list-item role="listitem">
+                    <span id="mission">
+                        Our Disney vacation blog is dedicated to providing families with valuable information, tips, and recommendations for planning and enjoying the ultimate Disney vacation experience.
+                    </span>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+    <div class="flex-container">
+        <p class="gdb-copyright">&copy; Copyright {{copyDate}}, godisneyblog.com. All Rights Reserved</p>
+    </div>
+</footer>

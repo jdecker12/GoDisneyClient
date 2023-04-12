@@ -1,0 +1,15 @@
+
+  <form [formGroup]="selectImageForm">
+    <mat-radio-group formControlName="selectImageRadioGroup" (change)="getRadioVal()" aria-label="Select an option">
+      <mat-radio-button value="1">Card image</mat-radio-button>
+      <mat-radio-button value="2">Secondary image</mat-radio-button>
+    </mat-radio-group>
+  </form>
+
+
+<div mat-dialog-content>
+    <img src="../../assets/img/{{data.images}} " alt="{{data.images}}"/>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="[data.images, getRadioVal()]" cdkFocusInitial>Add selection to form input</button>
+</div> 

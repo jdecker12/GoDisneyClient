@@ -1,0 +1,21 @@
+<div id="news-feed" class="flex-container">
+    <div id="news-heading-container">
+        <span class="news-heading"><u>Disney News</u></span><mat-icon>newspaper</mat-icon>
+    </div>
+    
+    <mat-accordion *ngIf="cards$ | async as cards">
+        <span *ngFor="let c of cards; let i = index">
+            <mat-expansion-panel id="panel{{ i }}" class="mat-expanded panel" [expanded]="i === 0" (opened)="step">
+                <mat-expansion-panel-header class="mat-expanded">
+                    <mat-panel-title>
+                        {{ c.cardTitle }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                    <img src="../../assets/img/{{c.cardImg}}.jpg" />
+               <span *ngFor="let x of c.cardContents">
+                   <p>{{ x.paraOne }}</p>
+               </span>
+            </mat-expansion-panel>
+        </span>
+    </mat-accordion>
+</div>
