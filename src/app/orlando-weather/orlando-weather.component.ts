@@ -45,8 +45,7 @@ export class OrlandoWeatherComponent implements OnInit {
           },
           error: (err: any) => {
             console.log("failed to get weather info", err);
-          },
-          complete: () => console.log('login complete')
+          }
          })
   }
 
@@ -114,7 +113,6 @@ export class OrlandoWeatherComponent implements OnInit {
 
   isBeforeSunrise(sunriseTimestamp: number): boolean {
     let currentTime = new Date().getTime();
-    console.log(currentTime);
     return currentTime < sunriseTimestamp;
   }
 
@@ -122,10 +120,8 @@ export class OrlandoWeatherComponent implements OnInit {
     const currentUnixTime = Math.floor(Date.now() / 1000); // get current Unix time in seconds
     const localTime = new Date(currentUnixTime * 1000); // convert Unix time to local time
     if (localTime.getHours() >= 20 || localTime.getHours() < 6) {
-      console.log("It's nighttime.");
       return true;
     } else {
-      console.log("It's daytime.");
       return false;
     }
   }

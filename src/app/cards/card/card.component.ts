@@ -34,8 +34,10 @@ export class CardComponent implements OnInit {
           });
       setTimeout(() => {
           var cards = document.getElementsByClassName('go-dis-card');
-          var crdArr = Array.from(cards);
-          crdArr[0].classList.add('first-card');
+          if (cards.length > 0) {
+            var crdArr = Array.from(cards);
+            crdArr[0].classList.add('first-card');
+          }
       }, 3000);
 
 
@@ -50,13 +52,15 @@ export class CardComponent implements OnInit {
         myWindow.onscroll = () => {
           setTimeout(() => {
               var myElems = document.getElementsByClassName('go-dis-card');
-              var cardArr = Array.from(myElems);
-              cardArr.forEach((element) => {
-                  var myCard = element.getBoundingClientRect();
-                  if (myCard.top <= 900 && !element.classList.contains('first-card')) {
-                      element.classList.add('scroll-animation');
-                  }
-              });//end foreach
+              if (myElems.length > 0) {
+                var cardArr = Array.from(myElems);
+                cardArr.forEach((element) => {
+                    var myCard = element.getBoundingClientRect();
+                    if (myCard.top <= 900 && !element.classList.contains('first-card')) {
+                        element.classList.add('scroll-animation');
+                    }
+                });//end foreach
+              }
           }, 1000);
       }//end onscroll
     }

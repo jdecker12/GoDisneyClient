@@ -18,8 +18,19 @@ export class FullCardComponent implements OnInit {
       this.route.params.subscribe(params => {
           let id = params['id'];
           this.card = this.data.getCardById(id)!;
-
+          if (this.card == undefined) {
+            this.getCardOnRefresh(id);
+          }
       });
+}
+
+getCardOnRefresh(x: string) {
+  this.data.getCardByName(x)
+  .subscribe(success => {
+    if(success){
+    this.card = this.data.card;
+    }
+  });
 }
 
 }

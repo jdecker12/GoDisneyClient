@@ -39,8 +39,7 @@ export class LoginComponent implements OnInit {
           },
           error: () => {
             this.errMessage = "Failed to log in";
-          },
-          complete: () => console.log('login complete')
+          }
          })
 }
 

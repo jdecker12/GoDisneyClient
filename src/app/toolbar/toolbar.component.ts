@@ -21,9 +21,7 @@ export class ToolbarComponent implements OnInit {
 
     get _loginRequired() { return this.data.loginRequired };
 
-    constructor(private data: DataService, private router: Router, private cd: ChangeDetectorRef) {
-       console.log(this._loginRequired  + ' logged in bool');
-    }
+    constructor(private data: DataService, private router: Router, private cd: ChangeDetectorRef) {}
 
     onAdmin(): void {
         this._loginRequired == true ? this.router.navigate(['login']) : this.router.navigate(['select-card']);

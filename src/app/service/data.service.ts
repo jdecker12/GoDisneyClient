@@ -5,10 +5,14 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Card, CardContent } from '../models/card';
 import { OrlandoWeather, Weather } from '../models/orlando-weather';
 import { UserKey } from '../models/userKey';
+import { environment } from 'src/environments/environment';
+
+const apiUrl = `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService {
 
   
@@ -28,6 +32,8 @@ export class DataService {
 
   private userKey: UserKey = {userKey: '', userId: 0};
   public imgArr: {} = [];
+
+  
 
   public  httpOptions = {
       headers: new HttpHeaders({
@@ -90,7 +96,6 @@ export class DataService {
     .pipe(
         map((data: any) => {
             this.orlandoWeather = data;
-            console.log(this.orlandoWeather);
             return this.orlandoWeather;
         }));
   }
@@ -120,7 +125,6 @@ export class DataService {
       })
           .pipe(
           map((response) => {
-            console.log(response);
               this.userKey = new UserKey();
               return true;
           })
@@ -178,7 +182,6 @@ export class DataService {
       })
       .pipe(
           map((response) => {
-            console.log(response);
               this.imgArr = response;
               return this.imgArr;
           })

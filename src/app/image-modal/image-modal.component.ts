@@ -76,8 +76,6 @@ export class DialogOverviewExampleDialog implements OnInit {
       const selectedValue = this.selectImageForm.get('selectImageRadioGroup');
 
       this.data.location = selectedValue?.value;
-      console.log(this.data.location);
-     
       return this.data.location;
     }
 

@@ -134,15 +134,12 @@ export class SelectCardComponent implements OnInit {
                   return true;
               }
 
-return;
-              
+                return;
           });
-
   }
 
   getRadioVal() {
       this.isChecked = this.updateCardForm.get('radioGroup')?.value;
-      console.log(this.isChecked);
   }
 
   deleteSelectCard(): void {

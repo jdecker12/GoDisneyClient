@@ -51,7 +51,6 @@ export class BottomSheetOverviewExampleSheet {
   public asTerms: boolean = this.data[1];
    
   openLink(event: MouseEvent): void {
-    console.log(event);
       this._bottomSheetRef.dismiss();
       event.preventDefault();
   }
