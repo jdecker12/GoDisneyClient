@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Card, CardContent } from '../models/card';
+import { Contact } from '../models/contact';
 import { OrlandoWeather, Weather } from '../models/orlando-weather';
 import { UserKey } from '../models/userKey';
 import { environment } from 'src/environments/environment';
@@ -24,6 +25,8 @@ export class DataService {
   private tokenExpiration: any;
 
   public card: Card = new Card();
+  public contact: Contact = new Contact();
+  public messages:[] = [];
 
   public cards: Card[] = [];
   public orlandoWeather: OrlandoWeather = {} as OrlandoWeather;
@@ -32,6 +35,8 @@ export class DataService {
 
   private userKey: UserKey = {userKey: '', userId: 0};
   public imgArr: {} = [];
+  public image: any;
+  public testResult: any;
 
   
 
@@ -43,7 +48,7 @@ export class DataService {
   };
 
   loadCards(): any{
-      return this.http.get("/api/cards/GetAllCards")
+      return this.http.get(apiUrl + "/api/cards/GetAllCards")
           .pipe(
           map((data: any) => {
               this.cards = data;
@@ -52,7 +57,7 @@ export class DataService {
   }
 
   loadCardsByCategory(cat: string): any {
-      return this.http.get("/api/cards/GetByCategory/" + cat)
+      return this.http.get(apiUrl + "/api/cards/GetByCategory/" + cat)
           .pipe(
               map((data: any) => {
                   this.cards = data;
@@ -61,7 +66,7 @@ export class DataService {
   }
 
   loadCardLinks(cat: string): any {
-      return this.http.get("/api/cards/GetCardsLinkData/" + cat)
+      return this.http.get(apiUrl + "/api/cards/GetCardsLinkData/" + cat)
           .pipe(
               map((data: any) => {
                   this.cards = data;
@@ -74,7 +79,7 @@ export class DataService {
   }
 
   getMyCardById(id: number): Observable<boolean> {
-      return this.http.get("/api/cards/GetCardById/" + id)
+      return this.http.get(apiUrl + "/api/cards/GetCardById/" + id)
           .pipe(
           map((data: any) => {
               this.card = data;
@@ -83,7 +88,7 @@ export class DataService {
   }
 
   getCardByName(name: string): Observable<boolean> {
-     return this.http.get("/api/cards/GetCardByName/" + name)
+     return this.http.get(apiUrl + "/api/cards/GetCardByName/" + name)
           .pipe(
           map((data: any) => {
               this.card = data;
@@ -110,17 +115,18 @@ export class DataService {
       let uPass: string = btoa(creds.password);
       creds.username = uName;
       creds.password = uPass;
-      return this.http.post("/api/Auth/CreateToken", creds)
+      return this.http.post(apiUrl + "/api/Auth/CreateToken", creds)
           .pipe(
               map((data: any) => {
               this.token = data.token;
               this.tokenExpiration = data.expiration;
+              localStorage.setItem('authToken', this.token);
               return true;
           }));
   }
 
   public saveUserKey(key: any): Observable<boolean> {
-      return this.http.post("/api/Auth/StoreKey", key, {
+      return this.http.post(apiUrl + "/api/Auth/StoreKey", key, {
           headers: new HttpHeaders().set('Content-Type','application/json')
       })
           .pipe(
@@ -132,7 +138,7 @@ export class DataService {
   } 
 
   public updateCard(name:string, data: any) {
-      return this.http.put("/api/cards/"+ name, data, {
+      return this.http.put(apiUrl + "/api/cards/"+ name, data, {
           headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
       }).pipe(
           map(() => {
@@ -143,7 +149,7 @@ export class DataService {
 
   public checkout() {
      
-      return this.http.post("/api/orders", this.card, {
+      return this.http.post(apiUrl + "/api/orders", this.card, {
           headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
       })
           .pipe(
@@ -154,7 +160,7 @@ export class DataService {
   }
 
   public admin(data: any): Observable<boolean> {
-      return this.http.post("/api/cards", data, {
+      return this.http.post(apiUrl + "/api/cards", data, {
           headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
       })
        .pipe(
@@ -165,7 +171,7 @@ export class DataService {
   }
 
   public deleteCard(name:string) {
-      return this.http.delete("/api/cards/"+ name, {
+      return this.http.delete(apiUrl + "/api/cards/"+ name, {
           headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
       })
           .pipe(
@@ -176,8 +182,37 @@ export class DataService {
           );
   }
 
+  test(file: File): any{
+    return this.http.post(`${apiUrl}/api/Image/UploadImage`, file)
+        .pipe(
+        map((data: any) => {
+            console.log(data);
+            return data;
+        }));
+}
+
+  public uploadImage(image:FormData): Observable<any> {
+    return this.http.post(apiUrl + "/api/Image/UploadImage", image, {
+        headers: new HttpHeaders().set("Authorization", "Bearer " + this.token),
+        responseType: 'arraybuffer'
+    })
+    .pipe(
+        map((response: ArrayBuffer) => {
+            if(response instanceof ArrayBuffer) {
+                return response;
+            } else {
+                throw new Error("Failed to upload image");
+            }  
+        }),
+        catchError((error:any) => {
+            console.log(error);
+            return throwError(error);
+        })
+    );
+  }
+
   getImageList() : Observable<object> {
-      return this.http.get("/api/Cards/GetAllImages/",{
+      return this.http.get(apiUrl + "/api/cards/GetAllImages/",{
           headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
       })
       .pipe(
@@ -185,6 +220,52 @@ export class DataService {
               this.imgArr = response;
               return this.imgArr;
           })
-      )
+      );
+  }
+
+  saveContact(data:any) : Observable<boolean> {
+    return this.http.post(`${apiUrl}/api/contact/SaveContact`, data, {
+        headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
+    })
+    .pipe(
+        map(() => {
+            this.contact = new Contact();
+            return true;
+        })
+    )
+  }
+
+  getAllMessages() : Observable<object> {
+    return this.http.get(`${apiUrl}/api/contact/GetAllEmail`, {
+        headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
+    })
+    .pipe(
+        map((data: any) => {
+            console.log(data);
+           this.messages = data;
+            return this.messages;
+        }),
+        catchError((error: any) => {
+            console.log(error);
+            return throwError(error);
+        })
+    )
+  }
+
+  deleteMessage(name: string) : Observable<object> {
+    return this.http.delete(`${apiUrl}/api/contact/DeleteEmail/` + name, {
+        headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
+    })
+    .pipe(
+        map((data: any) => {
+            console.log(data);
+           this.messages = data;
+            return this.messages;
+        }),
+        catchError((error: any) => {
+            console.log(error);
+            return throwError(error);
+        })
+    )
   }
 }

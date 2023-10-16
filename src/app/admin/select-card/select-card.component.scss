@@ -53,7 +53,7 @@
         font-size: 1.75rem;
     }
 
-    h3 {
+    h3, h2 {
         margin-left: 20px;
         color: $d-dark;
     }
@@ -151,6 +151,31 @@
         padding: 0;
         margin: 10px 0;
         display: inline-block;
+    }
+
+    .helper-section {
+        background-image: $blue-radial-gradient;
+        padding-top: 20px;
+        border-radius: 3px;
+        color: #fff;
+        .image-upload {
+            form {
+                margin: 0 20px;
+            }
+        }
+
+        h2, h3 {
+            color:#fff;
+        }
+
+        .mat-stroked-button a, .mat-button-wrapper a {
+            color: #fff !important;
+        }
+
+        .mat-stroked-button:not(.mat-button-disabled) {
+            border-color: #fff;
+        }
+
     }
 }
 

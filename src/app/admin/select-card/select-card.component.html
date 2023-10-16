@@ -45,7 +45,7 @@
 
                 <div class="example-container">
                     <div *ngIf="selected">
-                        <div class="form-image"><img mat-card-image src="../../assets/img/{{card.cardImg}}.jpg"></div>
+                        <div class="form-image"><img mat-card-image src="../../assets/img/{{card.cardImg}}"></div>
                     </div>
                     <mat-form-field>
                         <input matInput placeholder="Card Image" name="cardImg" formControlName="cardImg" id="cardImg" required>
@@ -54,7 +54,7 @@
 
                 <div class="example-container">
                     <div *ngIf="selected">
-                        <div class="form-image"><img mat-card-image src="../../assets/img/{{card.cardImg3}}.jpg"></div>
+                        <div class="form-image"><img mat-card-image src="../../assets/img/{{card.cardImg3}}"></div>
                     </div>
                     <mat-form-field>
                         <input matInput placeholder="Secondary Image" name="cardImg3" formControlName="cardImg3" id="cardImg3">
@@ -109,12 +109,28 @@
                     <button mat-button mat-raised-button (click)="cancel()">Cancel</button>
                 </mat-card-actions>
             </form>
-            <hr>
-            <h3>Helper Section</h3>
-            <div class="example-container ">
-                <button mat-stroked-button type="button"><a href="https://material.io/resources/icons/?style=baseline" target="_blank">Material Icons</a></button>
+            <div class="helper-section">
+                <h2>Helper Section</h2>
+                <h3>Icons</h3>
+                <div class="example-container ">
+                    <button mat-stroked-button type="button"><a href="https://material.io/resources/icons/?style=baseline" target="_blank">Material Icons</a></button>
+                </div>
+                <br>
+                <div class="image-upload">
+                    <h3>Image Upload</h3>
+                    <form [formGroup]="imageUploadForm" (submit)="onInputChange(imageUploadForm.value)">
+                        <input type="file" name="uploadFileInput" (change)="getFile($event)" formControlName="uploadFileInput" accept="image/jpeg"/>
+                        <button class="a-button" [disabled]="!imageSelected" mat-button mat-raised-button type="submit"><mat-icon>file_upload</mat-icon>Save Image</button>
+                    </form>
+                </div>
+    
+                <br>
+                <div class="image-modal">
+                    <h3>Available Images</h3>
+                    <app-image-modal [images]="images" (selectImg)="onSelected($event)"></app-image-modal>
+                </div>
             </div>
-            <br>
-            <h3>Available Images</h3>
-           <app-image-modal [images]="images" (selectImg)="onSelected($event)"></app-image-modal> 
+            <app-snack-bar [message]="[uploadMssg, action]"></app-snack-bar>
+
+ 
 </mat-card>

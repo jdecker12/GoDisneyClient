@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../service/data.service';
 import { Card} from '../../models/card';
 import { FormControl, Validators, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
-//import { subscribeOn } from 'rxjs/operators';
 
 @Component({
   selector: 'app-select-card',
@@ -24,6 +23,12 @@ export class SelectCardComponent implements OnInit {
   public result: any;
   public crdCntns: any;
   public isChecked!: string;
+  public selectedFile: File | null = null;
+  public formData = new FormData();
+  public imageSelected:boolean = false;
+  public uploadMssg: string  = "";
+  public action: string = "";
+ 
 
   updateCardForm!: FormGroup;
   cardContents!: FormGroup;
@@ -40,6 +45,11 @@ export class SelectCardComponent implements OnInit {
   paraFour!: FormControl;
   cardId!: FormControl;
 
+  imageUploadForm!: FormGroup;
+  uploadFileInput!: FormControl;
+
+
+
 
   ngOnInit() {
       if (this.data.loginRequired) {
@@ -50,6 +60,10 @@ export class SelectCardComponent implements OnInit {
           if(success) {
              this.images  = success as Array<string>;
           }
+      });
+
+      this.imageUploadForm = new FormGroup({
+        uploadFileInput:  new FormControl()
       });
 
       this.card = new Card();
@@ -197,6 +211,42 @@ export class SelectCardComponent implements OnInit {
 
   cancel() {
       this.router.navigate(["/card"]);
+  }
+getFile(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.imageSelected = true;
+   
+    return this.selectedFile;
+}
+  onInputChange(data: File) {
+    if (this.selectedFile) {
+        this.uploadMssg = '';
+        this.action = ''
+        this.uploadFile();
+    }
+  }
+
+uploadFile() {
+    if (this.selectedFile) {       
+       this.formData.append('uploadFileInput', this.selectedFile as Blob);
+        this.data.uploadImage(this.formData).subscribe({
+        next: (response: ArrayBuffer) => {
+            if (response.byteLength > 0) {
+                this.uploadMssg = 'Image uploaded successfully';
+                this.action = 'Sucess';
+                this.imageSelected = false;
+              } else {
+                this.uploadMssg = 'Empty response from the server';
+                this.action = 'Failed';
+                this.imageSelected = false;
+              }
+        },
+        error: (err) =>  {
+            console.log(err);
+            this.uploadMssg = 'Image failed to upload'
+        } 
+    }); 
+    }
   }
 
 }

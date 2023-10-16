@@ -4,6 +4,10 @@
    
     h1 {
         color: $d-dark;
+        .login-icon {
+            position: relative;
+            bottom: -5px;;
+        }
     }
 }
 .mat-card {

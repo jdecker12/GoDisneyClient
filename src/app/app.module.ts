@@ -27,6 +27,9 @@ import { FullCardComponent } from './cards/full-card/full-card.component';
 import { DataService } from './service/data.service';
 import { OrlandoWeatherComponent } from './orlando-weather/orlando-weather.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { CmsEmailComponent } from './cms-email/cms-email.component';
+import { ManageMessagesComponent } from './manage-messages/manage-messages.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
     FullCardComponent,
     OrlandoWeatherComponent,
     VideoPlayerComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    SnackBarComponent,
+    CmsEmailComponent,
+    ManageMessagesComponent
   ],
   imports: [
     BrowserModule,

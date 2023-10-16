@@ -85,7 +85,7 @@ export class SideNavComponent implements OnInit {
     }
 
     onAdmin(): void {
-        this.data.loginRequired ? this.router.navigate(['login']) : this.router.navigate(['select-card']);
+        this.data.loginRequired ? this.router.navigate(['login']) : this.router.navigate(['cms-email']);
     }
 
 }

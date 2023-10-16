@@ -24,11 +24,11 @@ export class ToolbarComponent implements OnInit {
     constructor(private data: DataService, private router: Router, private cd: ChangeDetectorRef) {}
 
     onAdmin(): void {
-        this._loginRequired == true ? this.router.navigate(['login']) : this.router.navigate(['select-card']);
+        this._loginRequired == true ? this.router.navigate(['login']) : this.router.navigate(['cms-email']);
     }
 
     buttonText(): void {
-        this._loginRequired == true ? this.update = 'login' : this.update = 'Create Content'; 
+        this._loginRequired == true ? this.update = 'login' : this.update = 'Manage Website'; 
     }
 
     ngOnInit() {

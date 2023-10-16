@@ -3,6 +3,7 @@
     display: flex;
     flex-flow: row wrap;
     margin-bottom: 5rem;
+    margin-left: 20px;
     width: 95%;
     ul {
         list-style-type: none;
@@ -13,10 +14,52 @@
     }
 }
 
-.mat-form-field-infix {
-    width: 350px;
+img {
+    width: 100%;
 }
 
+.mat-radio-button {
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+.dialog-container {
+    position: relative;
+}
+.mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    margin-left: 20px;
+    color: #fff;
+    .mat-label {
+        color: #fff;
+    }
+}
+
+.mat-select-placeholder {
+    color: #fff;
+}
+
+.mat-form-field-infix {
+    width: 350px;
+    margin: 0 20px;
+}
+
+.mat-select-arrow {
+    color: #fff;
+}
+
+.label-text {
+    color: #fff !important;
+}
+.mat-radio-container {
+    margin-bottom: 30px;
+}
+
+.mat-radio-label {
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
 .mat-radio-label-content {
     -webkit-user-select: auto;
     user-select: auto;
@@ -26,5 +69,5 @@
     padding-left: 8px;
     padding-right: 0;
     margin-right: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }

@@ -8,6 +8,9 @@ import { SelectCardComponent } from './admin/select-card/select-card.component';
 import { FullCardComponent } from './cards/full-card/full-card.component';
 import { ViewportScroller } from '@angular/common';
 import { filter } from 'rxjs/operators';
+import { CmsEmailComponent } from './cms-email/cms-email.component';
+import { ManageMessagesComponent } from './manage-messages/manage-messages.component';
+
 
 const routes: Routes = [
         
@@ -16,8 +19,9 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'select-card', component: SelectCardComponent },
+  { path: 'manage-messages', component: ManageMessagesComponent },
+  { path: 'cms-email', component: CmsEmailComponent },
   { path: ':id', component: FullCardComponent }, 
-  
   { path: '**', redirectTo: 'card' }
 ]
 

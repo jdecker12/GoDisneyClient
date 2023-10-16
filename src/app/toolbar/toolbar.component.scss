@@ -10,10 +10,6 @@
     background-image: linear-gradient(to right top, #266b95, #1e6089, #15557e, #0a4a72, #004067);
     color: #fff;
 
-    .mat-icon.mat-icon.notranslate.gdb-hamburger.material-icons.mat-ligature-font.mat-icon-no-color {
-        margin-left: -4%;
-    }
-
     #goofy-icon {
         font-size: 12px;
     }
@@ -56,10 +52,6 @@
         }
     }
 
-  /*  .gdb-hambuger {
-        display: none;
-    } */
-
     .example-icon {
         padding: 0 14px;
     }
@@ -82,8 +74,8 @@
 
     @media(max-width: '720px') {
         .sidebar-toggle, .gdb-hamburger  {
-            display: flex;
-            margin-left: 20%;
+            position: relative;
+            margin-left: 22%;
         }
 
         #goofy-icon, .shield-icon {
@@ -97,10 +89,24 @@
         #goofy-icon, .toolbar-font, .shield-icon {
             display: none;
         }
+     }
 
+     @media(min-width: 391px) and (max-width: 719px) {
         .sidebar-toggle, .gdb-hamburger  {
-            display: flex;
+            position: relative;
             margin-left: 20%;
+        }
+        .example-spacer, .sm-spacer, .two-rems {
+            display: none;
+        }
+     }
+     @media(max-width: 390px) {
+        .sidebar-toggle, .gdb-hamburger  {
+            position: relative;
+            margin-left: 10%;
+        }
+        .example-spacer, .sm-spacer, .two-rems {
+            display: none;
         }
      }
      

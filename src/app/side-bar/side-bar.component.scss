@@ -35,7 +35,8 @@
             width: 80px;
             z-index: 10;
             top: 175px;
-            left: 37.5%;
+            left: 50%;
+            transform: translateX(-50%);
             border: 5px solid #fff;
         }
 
@@ -58,7 +59,8 @@
             width: 80px;
             z-index: 10;
             top: 175px;
-            left: 43%;
+            left: 50%;
+            transform: translateX(-50%);
             border: 5px solid #fff;
         }
 

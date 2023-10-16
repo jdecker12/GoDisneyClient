@@ -40,12 +40,14 @@ export class ImageModalComponent implements OnInit {
 
   dialogRef.afterClosed().subscribe(result => {
     let img = result[0];
+    console.log(img);
     let selInput = result[1];
-    let nameArr = Array.from(img);
-    let count = nameArr.indexOf('.');
-    let truncName = nameArr.splice(0, count);
-    let imgName = truncName.join("");
-    this.selectImg.emit([imgName, selInput]);
+    // let nameArr = Array.from(img);
+    // let count = nameArr.indexOf('.');
+    // let truncName = nameArr.splice(0, count);
+    // let imgName = truncName.join("");
+    //this.selectImg.emit([imgName, selInput]);
+    this.selectImg.emit([img, selInput]);
   });
 
   }

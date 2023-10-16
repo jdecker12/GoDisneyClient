@@ -1,5 +1,5 @@
 <mat-form-field>
-    <mat-label>Select image here to view</mat-label>
+    <mat-label class="label-text">Select image here to view</mat-label>
     <mat-select [formControl]="myselect">
       <mat-option *ngFor="let img of images" [value]="img" (click)="openDialog()">
         {{ img }}

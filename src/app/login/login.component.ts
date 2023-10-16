@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.data.login(this.creds)
         .subscribe({
           next: () => {
-            this.route.navigate(["select-card"]); 
+            this.route.navigate(["cms-email"]); 
             if (this.checked == true) {
               this.enc(this.creds);
             }

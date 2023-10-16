@@ -2,10 +2,10 @@
     <div class="flex-container-col">
         <mat-card class="go-dis-card mat-elevation-z13 fade-in">
             <div *ngIf="card.cardImg3; else defaultImage">
-                <img mat-card-image src="../../../assets/img/{{card.cardImg3}}.jpg" [alt]="card.cardTitle">
+                <img mat-card-image src="../../../assets/img/{{card.cardImg3}}" [alt]="card.cardTitle">
             </div>
             <ng-template #defaultImage>
-                <img mat-card-image src="../../../assets/img/{{card.cardImg}}.jpg" [alt]="card.cardTitle">
+                <img mat-card-image src="../../../assets/img/{{card.cardImg}}" [alt]="card.cardTitle">
             </ng-template>
             <mat-card-header class="card-header" color="Secondary">
                 <mat-icon>{{card.cardIcon}}</mat-icon>

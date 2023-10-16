@@ -3,7 +3,7 @@
     <div id="main-content" class="flex-container-col">
         <mat-card class="go-dis-card mat-elevation-z13">
             <mat-card-header>
-                <mat-card-title><h1>Login</h1></mat-card-title>
+                <mat-card-title><h1>Login <mat-icon class="login-icon">login</mat-icon></h1></mat-card-title>
                 <span *ngIf="errMessage">{{errMessage}}</span>
             </mat-card-header>
             <form (submit)="onLogin()" #theForm="ngForm">
