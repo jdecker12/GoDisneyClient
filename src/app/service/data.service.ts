@@ -125,6 +125,29 @@ export class DataService {
           }));
   }
 
+  public getToken(): string {
+    if (this.token == '') {
+        const token = localStorage.getItem('authToken');
+        if (token) {
+            this.token = token;
+        }
+    }
+    return this.token; 
+  }
+
+
+
+  public validateToken(token: string ): Observable<boolean> {
+    return this.http.get(`${apiUrl}/api/Auth/ValidateToken/${token}`)
+    .pipe(
+        map((data: any) => {
+            console.log(data);
+            this.token = token;
+            return true;
+        })
+    );
+  }
+
   public saveUserKey(key: any): Observable<boolean> {
       return this.http.post(apiUrl + "/api/Auth/StoreKey", key, {
           headers: new HttpHeaders().set('Content-Type','application/json')
@@ -182,15 +205,6 @@ export class DataService {
           );
   }
 
-  test(file: File): any{
-    return this.http.post(`${apiUrl}/api/Image/UploadImage`, file)
-        .pipe(
-        map((data: any) => {
-            console.log(data);
-            return data;
-        }));
-}
-
   public uploadImage(image:FormData): Observable<any> {
     return this.http.post(apiUrl + "/api/Image/UploadImage", image, {
         headers: new HttpHeaders().set("Authorization", "Bearer " + this.token),
@@ -212,6 +226,7 @@ export class DataService {
   }
 
   getImageList() : Observable<object> {
+      (this.token == '') ? this.validateToken(this.getToken()) : this.token;
       return this.http.get(apiUrl + "/api/cards/GetAllImages/",{
           headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
       })

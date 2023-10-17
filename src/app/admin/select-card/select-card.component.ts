@@ -52,9 +52,12 @@ export class SelectCardComponent implements OnInit {
 
 
   ngOnInit() {
-      if (this.data.loginRequired) {
+    if (this.data.loginRequired) {
+        let validToken = this.data.validateToken(this.data.getToken());
+        if (!validToken) {
           this.router.navigate(['/login']);
-      }
+        } 
+    }
       this.data.getImageList()
       .subscribe((success) => {
           if(success) {

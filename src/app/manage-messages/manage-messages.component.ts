@@ -21,12 +21,14 @@ export class ManageMessagesComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data.loginRequired) {
-      this.router.navigate(['/login']);
+      let validToken = this.data.validateToken(this.data.getToken());
+      if (!validToken) {
+        this.router.navigate(['/login']);
+      } 
   }
     this.data.getAllMessages()
     .subscribe({
       next: (success) => {
-        console.log(success);
         this.messages = success;
       }, 
       error: (err) => {

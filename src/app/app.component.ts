@@ -12,7 +12,19 @@ export class AppComponent implements OnInit{
     constructor(private data: DataService) {}
 
   ngOnInit(): void {
-  //   const token = localStorage.getItem('authToken');
-  //   this.data.login()
+    const token = localStorage.getItem('authToken');
+    console.log(token);
+    if (token) {
+      this.data.validateToken(token)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
+   
  }
 }
