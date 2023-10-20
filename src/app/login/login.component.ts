@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
           next: () => {
             this.route.navigate(["cms-email"]); 
             if (this.checked == true) {
-              this.enc(this.creds);
+              //this.enc(this.creds);
             }
           },
           error: () => {

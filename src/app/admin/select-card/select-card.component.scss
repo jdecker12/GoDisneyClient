@@ -51,6 +51,13 @@
     .mat-card-title {
         color: $d-dark;
         font-size: 1.75rem;
+        display: flex;
+        justify-content: space-between;
+
+        .mat-button-wrapper {
+            align-items: right;
+            display: flex;
+        }
     }
 
     h3, h2 {

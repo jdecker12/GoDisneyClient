@@ -8,14 +8,26 @@
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title><h1>Admin <mat-icon>admin_panel_settings</mat-icon></h1></mat-card-title>
+                <p>Streamline control and oversight of your platform with GDB's efficient admin tools.</p>
             </mat-card-header>
             <mat-card-content>
 
             </mat-card-content>
-            <mat-card-actions class="amin-actions">
-                <button class="a-button" mat-button mat-raised-button (click)="goToContentCreator()" >Content Creator</button>
-                <button mat-button mat-raised-button (click)="cancel()">Cancel</button>
-                <button class="a-button" mat-button mat-raised-button (click)="goToManageMessages()">Manage Messages</button>
+            <mat-card-actions class="admin-actions">
+                <div class="inline-container">
+                    <h3><mat-icon>create</mat-icon> Content Management</h3>
+                    <p>Effortlessly organize, update, and publish your content with GDB's user-friendly content management tools.</p>
+                    <button class="a-button" mat-button mat-raised-button (click)="goToContentCreator()" >Content Creator</button>
+                </div>
+                <div class="inline-container cancel-button">
+                    <button mat-button mat-raised-button (click)="cancel()">Cancel</button>
+                </div>
+                <div class="inline-container">
+                    <h3><mat-icon>contact_mail</mat-icon> User Messages</h3>
+                    <p>Stay connected and engage with your users through GDB's interactive user messages platform.</p>
+                    <button class="a-button" mat-button mat-raised-button (click)="goToManageMessages()">Manage Messages</button>
+                </div>
+               
             </mat-card-actions>
         </mat-card>
         </div>

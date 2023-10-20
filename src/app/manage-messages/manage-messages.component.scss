@@ -55,6 +55,10 @@ h1 {
     min-width: 0;
     width: 100%;
 }
+.primary {
+    background-color: $d-primary;
+    color: #fff;
+}
 
 @media(max-width: '720px') {
     .mat-card {

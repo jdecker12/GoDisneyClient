@@ -1,7 +1,7 @@
 
     <mat-card class="go-dis-card mat-elevation-z13 fade-in">
         <mat-card-header>
-            <mat-card-title>Content Builder <mat-icon>create</mat-icon></mat-card-title>
+            <mat-card-title>Content Builder <mat-icon>create</mat-icon></mat-card-title> <button class="a-button" mat-button mat-raised-button [routerLink]="['/cms-email']"><mat-icon>arrow_back</mat-icon> Back</button>
         </mat-card-header>
         <form  [formGroup]="updateCardForm" (submit)="(isChecked == 'update') ? updateFormData(updateCardForm.value) : saveFormData(updateCardForm.value)">
 

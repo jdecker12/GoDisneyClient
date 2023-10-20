@@ -4,16 +4,15 @@
             <div class="custom-header">
                 <mat-icon>markunread_mailbox</mat-icon>
             </div>
-            <!-- <img mat-card-image src="../../../assets/img/CastawayCay.jpg" alt="Mangnolia Golf"> -->
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title><h1>Messages </h1></mat-card-title>
+                <mat-card-title><h1>Messages </h1></mat-card-title> <button class="a-button" mat-button mat-raised-button [routerLink]="['/cms-email']"><mat-icon>arrow_back</mat-icon> Back</button>
             </mat-card-header>
             <mat-card-content>
                 <div *ngIf="messages == undefined"><h2>{{ emptyMessageBox }}</h2></div>
                 <div *ngFor="let message of messages">
                     <p>Name: {{ message.name }}</p>
-                    <p>Email: {{ message.email }}</p>
+                    <p>Email: <a [href]="'mailto:' + message.email" >{{ message.email }}</a></p>
                     <p>Message: {{ message.message }}</p>  <span> <button mat-button mat-raised-button  (click)="deleteMessage(message.email)">Delete</button></span>
                     <hr>
                 </div>
