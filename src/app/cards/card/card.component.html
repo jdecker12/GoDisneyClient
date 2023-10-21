@@ -13,6 +13,8 @@
         </mat-card-content>
         <mat-card-actions>
         <button mat-fab [routerLink]="['/', c.cardTitle]"><mat-icon>add</mat-icon><span></span></button>
+        <button (click)="sendMessage(c.cardTitle, c.cardIcon)">Send Message</button>
         </mat-card-actions>
+        <div *ngFor="let item of signlrMessageList">Card Name: {{item.user}}  Card Icon: {{ item.message }}  </div>
     </mat-card>
 </div>

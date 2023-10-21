@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 
 import { Card } from '../../models/card';
 import { window } from 'rxjs/operators';
+import { SignalrHubServiceService } from 'src/app/service/signalr-hub-service.service';
 
 @Component({
   selector: 'app-card',
@@ -14,7 +15,16 @@ export class CardComponent implements OnInit {
 
   public initAnimation: boolean = false;
 
-  constructor(private data: DataService, private router: Router, private renderer: Renderer2) { }
+  public signlrName: string = '';
+  public sgnlrMssage: string = '';
+  public signlrMessageList: any[] = [];
+  public signlrResponse = {
+    user: this.signlrName,
+    message: this.sgnlrMssage
+  }
+
+
+  constructor(private data: DataService, private router: Router, private renderer: Renderer2, private signalrService: SignalrHubServiceService) { }
   public cards: Card[] = [];
 
   ngOnInit(): void {
@@ -43,6 +53,16 @@ export class CardComponent implements OnInit {
 
       this.animateOnScroll();
 
+      this.signalrService.onChatMessageReceived((user, message) => {
+        console.log(`Received message from ${user}: ${message}`);
+        if (user && message) {
+         const newMessage = {user, message}
+
+          this.signlrMessageList.push(newMessage)
+        }
+        
+    });
+
   }//end onInit
 
 
@@ -64,7 +84,12 @@ export class CardComponent implements OnInit {
           }, 1000);
       }//end onscroll
     }
- 
   }//end amimateOnScroll
+
+  sendMessage(user: string, message: string) {
+    console.log(`Sending message from ${user}: ${message}`);
+    this.signalrService.sendChatMessage(user, message);
+}
+
 
 }
