@@ -1,7 +1,7 @@
-<div class="flex-container">
+<div id="full-card" class="flex-container">
     <div class="flex-container-col">
         <mat-card class="go-dis-card mat-elevation-z13 fade-in">
-            <div *ngIf="card.cardImg3; else defaultImage">
+            <div *ngIf="!!card.cardImg3; else defaultImage">
                 <img mat-card-image src="../../../assets/img/{{card.cardImg3}}" [alt]="card.cardTitle">
             </div>
             <ng-template #defaultImage>

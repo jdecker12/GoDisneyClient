@@ -155,6 +155,12 @@ div#main-content {
     min-height: 500px;
     padding: 70px 0;
     //min-width: 800px;
+    .spinner {
+        position: absolute;
+        top: 500px;
+        left: 33%;
+        transform: translate(-50%);
+    }
 }
 
 @media(max-width: '720px') {

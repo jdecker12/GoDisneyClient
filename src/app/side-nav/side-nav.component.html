@@ -15,7 +15,7 @@
         <app-gdb-hero></app-gdb-hero>
        
         <div id="main-content" class="flex-container">
-           <mat-spinner *ngIf="!isLoaded"></mat-spinner>
+            <mat-spinner class="spinner" *ngIf="!isSpecificElementPresent"></mat-spinner>
            <div id="main-wrapper" *ngIf="cardData">
                <router-outlet></router-outlet>
            </div>
