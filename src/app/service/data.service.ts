@@ -160,7 +160,7 @@ export class DataService {
           );
   } 
 
-  public updateCard(name:string, data: any) {
+  public updateCard(name:string, data: any): Observable<boolean> {
       return this.http.put(apiUrl + "/api/cards/"+ name, data, {
           headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
       }).pipe(
@@ -276,6 +276,20 @@ export class DataService {
             console.log(data);
            this.messages = data;
             return this.messages;
+        }),
+        catchError((error: any) => {
+            console.log(error);
+            return throwError(error);
+        })
+    )
+  }
+
+  getCardsThreeAtATime(cat:string, page:number, pageSize:number ): Observable<Card[]> {
+    return this.http.get(`${apiUrl}/api/cards/GetCardsInfiniteScroll/${cat}/${page}/${pageSize}`)
+    .pipe(
+        map((data:any) => {
+            this.cards = data;
+            return this.cards;
         }),
         catchError((error: any) => {
             console.log(error);

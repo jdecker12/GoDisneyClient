@@ -181,6 +181,13 @@ div#main-content {
         margin-bottom: 200px;
     }
 
+    div#main-content {
+        .spinner {
+            left: 50%;
+            transform: translate(-50%);
+        }
+    }
+
 }
 @media(min-width: '1331px') and (max-width: '1465px'){
     #aside-container {
