@@ -30,6 +30,7 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { CmsEmailComponent } from './cms-email/cms-email.component';
 import { ManageMessagesComponent } from './manage-messages/manage-messages.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ManageMessagesComponent } from './manage-messages/manage-messages.compo
     DialogOverviewExampleDialog,
     SnackBarComponent,
     CmsEmailComponent,
-    ManageMessagesComponent
+    ManageMessagesComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,

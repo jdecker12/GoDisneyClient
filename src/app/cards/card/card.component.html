@@ -8,6 +8,7 @@
         <mat-card-content *ngFor="let p of c.cardContents">
             <div>
                 <p>{{p.paraOne}}</p>
+                <p class="tip" *ngIf="p.paraFour"><mat-icon class="tip">tips_and_updates</mat-icon><i>{{p.paraFour}}</i></p>
             </div>
             <a href="https://{{c.cardLink}}" target="_blank">{{c.cardLinkName}}</a>
         </mat-card-content>

@@ -7,6 +7,7 @@ import { Contact } from '../models/contact';
 import { OrlandoWeather, Weather } from '../models/orlando-weather';
 import { UserKey } from '../models/userKey';
 import { environment } from 'src/environments/environment';
+import { RegisterUser } from '../models/register-user';
 
 const apiUrl = `${environment.apiUrl}`;
 
@@ -23,6 +24,13 @@ export class DataService {
 
   private token: string = "";
   private tokenExpiration: any;
+  private user: RegisterUser = {
+      firstname: '',
+      lastname: '',
+      email: '',
+      username: '',
+      password: ''
+  };
 
   public card: Card = new Card();
   public contact: Contact = new Contact();
@@ -113,9 +121,13 @@ export class DataService {
       /// encrypt the request payload so user creds not visible to hackers and nefarious types
       let uName: string = btoa(creds.username);
       let uPass: string = btoa(creds.password);
-      creds.username = uName;
-      creds.password = uPass;
-      return this.http.post(apiUrl + "/api/Auth/CreateToken", creds)
+      let scrmblCreds = {
+        username:  uName,
+        password: uPass
+      }
+    //   creds.username = uName;
+    //   creds.password = uPass;
+      return this.http.post(apiUrl + "/api/Auth/CreateToken", scrmblCreds)
           .pipe(
               map((data: any) => {
               this.token = data.token;
@@ -143,6 +155,17 @@ export class DataService {
         map((data: any) => {
             console.log(data);
             this.token = token;
+            return true;
+        })
+    );
+  }
+
+  public registerUser(user: {firstname: string; lastname: string; email: string; username:string; password: string;} ): Observable<boolean> {
+    return this.http.post(`${apiUrl}/api/Auth/RegisterUser`, user)
+    .pipe(
+        map((data: any) => {
+            console.log(data);
+            this.user = user;
             return true;
         })
     );

@@ -13,11 +13,17 @@ export class CmsEmailComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data.loginRequired) {
-      let validToken = this.data.validateToken(this.data.getToken());
-      if (!validToken) {
-        this.router.navigate(['/login']);
-      } 
-  }
+      this.data.validateToken(this.data.getToken())
+        .subscribe({
+          next: (response) => {
+            console.log(response);
+          },
+          error: (err) => {
+            this.router.navigate(['/login']);
+            console.log(err);
+          }
+        });
+    }
   }
 
   goToManageMessages(): void {

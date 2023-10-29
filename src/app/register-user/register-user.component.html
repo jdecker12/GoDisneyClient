@@ -1,0 +1,36 @@
+<div class="flex-container form-width fade-in">
+    <div id="main-content" class="flex-container-col">
+        <mat-card class="go-dis-card mat-elevation-z13">
+            <mat-card-header>
+                <mat-card-title><h1>Register User <mat-icon class="login-icon">app_registration</mat-icon></h1></mat-card-title>
+               
+            </mat-card-header>
+            <form (submit)="onRegister()" #registerForm="ngForm">
+                <mat-card-content>
+                    <div class="example-container">
+                        <mat-form-field>
+                            <input matInput placeholder="First Name" name="firstname" [(ngModel)]="user.firstname">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Last Name" name="lastname" [(ngModel)]="user.lastname">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Email" name="email" [(ngModel)]="user.email">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="User Name" name="username" [(ngModel)]="user.username">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Enter your password" name="password" [(ngModel)]="user.password" [type]="hide ? 'password' : 'text'">
+                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button mat-raised-button class="a-button">Submit</button>
+                    <button mat-button mat-raised-button (click)="cancel()">Cancel</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+</div>

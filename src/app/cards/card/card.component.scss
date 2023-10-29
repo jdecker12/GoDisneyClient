@@ -7,23 +7,27 @@
     border-radius: 3px;
     position: relative;
     left: -1036px;
-    //padding: 0;
 
-    .mat-card-header {
+    .mat-card-header, .tip {
         color: $d-dark;
     }
 
     .go-dis-card.mat-card {
-        //padding: 0px 18px 23px;
         padding: 0;
         img {
             width: 100%;
         }
     }
 
-    .mat-card-content a {
+    .mat-card-content {
+        p:nth-child(2) {
+            padding: 5px;
+        }
+
+        a {
         color: $d-dark;
         text-decoration: underline;
+        }
     }
 
     .mat-fab {

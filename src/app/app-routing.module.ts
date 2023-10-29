@@ -10,6 +10,7 @@ import { ViewportScroller } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { CmsEmailComponent } from './cms-email/cms-email.component';
 import { ManageMessagesComponent } from './manage-messages/manage-messages.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register-user', component: RegisterUserComponent },
   { path: 'select-card', component: SelectCardComponent },
   { path: 'manage-messages', component: ManageMessagesComponent },
   { path: 'cms-email', component: CmsEmailComponent },

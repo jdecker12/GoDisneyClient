@@ -100,8 +100,11 @@ ngAfterViewInit(): void {
         const element = document.querySelector(selector);
         const contact = document.querySelector('#contact');
         const about = document.querySelector('#about');
+        const admin = document.querySelector('#admin');
+        const mssgs = document.querySelector('#manage-messages');
+        const slctcrd = document.querySelector('#select-card');
 
-        let test = !!isFullCard || !!element || !!about || !!contact ? true : false;
+        let test = !!isFullCard || !!element || !!about || !!contact || !!admin || !!mssgs || !!slctcrd? true : false;
 
         return test; 
       }
