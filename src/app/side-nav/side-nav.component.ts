@@ -5,6 +5,7 @@ import { DataService } from '../service/data.service';
 import { Router } from '@angular/router';
 import { Card } from '../models/card';
 import { ViewportScroller } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -17,6 +18,8 @@ export class SideNavComponent implements OnInit, AfterViewInit {
 
   navActive: boolean = false;
     cardData: Card[] = [];
+
+    private loadCardsSubscription!: Subscription;
     
 
     private mediaMatcher: MediaQueryList = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px`);
@@ -59,7 +62,7 @@ export class SideNavComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        this.data.loadCards()
+        this.loadCardsSubscription = this.data.loadCards()
             .subscribe((success: any) => {
                 if (success) {
                     this.cardData = this.data.cards;
@@ -114,6 +117,10 @@ ngAfterViewInit(): void {
 
     onAdmin(): void {
         this.data.loginRequired ? this.router.navigate(['login']) : this.router.navigate(['cms-email']);
+    }
+
+    ngOnDestroy(): void {
+      this.loadCardsSubscription.unsubscribe();
     }
 
 }

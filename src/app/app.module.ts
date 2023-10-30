@@ -31,6 +31,7 @@ import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { CmsEmailComponent } from './cms-email/cms-email.component';
 import { ManageMessagesComponent } from './manage-messages/manage-messages.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterUserAdminComponent } from './register-user-admin/register-user-admin.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     SnackBarComponent,
     CmsEmailComponent,
     ManageMessagesComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    RegisterUserAdminComponent
   ],
   imports: [
     BrowserModule,

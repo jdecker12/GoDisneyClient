@@ -25,11 +25,12 @@ export class DataService {
   private token: string = "";
   private tokenExpiration: any;
   private user: RegisterUser = {
-      firstname: '',
-      lastname: '',
+      fname: '',
+      lname: '',
       email: '',
       username: '',
-      password: ''
+      password: '',
+      userRole: ''
   };
 
   public card: Card = new Card();
@@ -160,13 +161,23 @@ export class DataService {
     );
   }
 
-  public registerUser(user: {firstname: string; lastname: string; email: string; username:string; password: string;} ): Observable<boolean> {
+  public registerUser(user: {fname: string; lname: string; email: string; username:string; password: string; userRole: string} ): Observable<boolean> {
     return this.http.post(`${apiUrl}/api/Auth/RegisterUser`, user)
     .pipe(
         map((data: any) => {
             console.log(data);
             this.user = user;
             return true;
+        })
+    );
+  }
+
+  public getUserRole(email:string): Observable<string> {
+    return this.http.get(`${apiUrl}/api/Auth/GetUserRole/${email}`)
+    .pipe(
+        map((data: any) => {
+            console.log(data);
+            return data;
         })
     );
   }

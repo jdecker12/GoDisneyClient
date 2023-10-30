@@ -4,11 +4,11 @@ import { DataService } from '../service/data.service';
 import { RegisterUser } from '../models/register-user';
 
 @Component({
-  selector: 'app-register-user',
-  templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.scss']
+  selector: 'app-register-user-admin',
+  templateUrl: './register-user-admin.component.html',
+  styleUrls: ['./register-user-admin.component.scss']
 })
-export class RegisterUserComponent implements OnInit {
+export class RegisterUserAdminComponent implements OnInit {
   public user: RegisterUser = {
     fname: '',
     lname: '',
@@ -28,7 +28,7 @@ export class RegisterUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onRegister() : void {
+  onRegisterAdmin() : void {
     this.data.registerUser(this.user)
     .subscribe({
       next: ()=> {

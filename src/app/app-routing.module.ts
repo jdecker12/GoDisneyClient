@@ -11,17 +11,19 @@ import { filter } from 'rxjs/operators';
 import { CmsEmailComponent } from './cms-email/cms-email.component';
 import { ManageMessagesComponent } from './manage-messages/manage-messages.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterUserAdminComponent } from './register-user-admin/register-user-admin.component';
+import { RoleGuard } from './role.guard';
 
 
-const routes: Routes = [
-        
+const routes: Routes = [   
   { path: 'card', component: CardComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register-user', component: RegisterUserComponent },
-  { path: 'select-card', component: SelectCardComponent },
-  { path: 'manage-messages', component: ManageMessagesComponent },
+  { path: 'register-user-admin', component: RegisterUserAdminComponent, canActivate: [RoleGuard], data: {roles: ['Admin']}  },
+  { path: 'select-card', component: SelectCardComponent, canActivate: [RoleGuard], data: {roles: ['Admin']} },
+  { path: 'manage-messages', component: ManageMessagesComponent, canActivate: [RoleGuard], data: {roles: ['Admin']} },
   { path: 'cms-email', component: CmsEmailComponent },
   { path: ':id', component: FullCardComponent }, 
   { path: '**', redirectTo: 'card' }

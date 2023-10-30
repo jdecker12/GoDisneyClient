@@ -3,6 +3,7 @@ import { DataService } from '../../service/data.service';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { Card } from '../../models/card';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-card',
@@ -18,9 +19,11 @@ export class CardComponent implements OnInit {
   private page: number = 1;
   private pageSize: number = 3;
   private isLoading: boolean = false;
+  private cardSubscription!: Subscription;
+  private routerEventsSubscription!: Subscription;
 
   ngOnInit(): void {
-    this.router.events.subscribe(event => {
+    this.routerEventsSubscription = this.router.events.subscribe(event => {
       var myWindow = document.getElementById('mat-sidenav-content');
       if (event instanceof NavigationEnd) {
         this.renderer.setProperty(myWindow, 'scrollY', 0);
@@ -56,7 +59,7 @@ export class CardComponent implements OnInit {
   }//end amimateOnScroll
 
   getCardsThreeAtATime(): any {
-    this.data.getCardsThreeAtATime('Main', this.page, this.pageSize)
+   this.cardSubscription = this.data.getCardsThreeAtATime('Main', this.page, this.pageSize)
       .subscribe({
         next: (response) => {
           if (response) {
@@ -90,5 +93,12 @@ export class CardComponent implements OnInit {
         element.classList.add('scroll-animation');
       }
     });//end foreach
+  }
+
+  ngOnDestroy(): void {
+    if (this.cardSubscription) {
+      this.routerEventsSubscription.unsubscribe();
+      this.cardSubscription.unsubscribe();
+    }
   }
 }

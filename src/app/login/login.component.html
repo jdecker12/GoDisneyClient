@@ -19,7 +19,7 @@
                         </mat-form-field>
                     </div>
                     <mat-checkbox [(ngModel)]="checked" (click)="uncheck()"  name="checked">Remember me!</mat-checkbox>
-                    <p (click)="goToRegisterUser()">Sign Up</p>
+                    <div id="createAcctButton"><a (click)="goToRegisterUser()"><i>Don't have a login... </i>Create an account</a></div>
                 </mat-card-content>
                 <mat-card-actions>
                     <button mat-button mat-raised-button class="a-button">Submit</button>

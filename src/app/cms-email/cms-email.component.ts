@@ -33,6 +33,10 @@ export class CmsEmailComponent implements OnInit {
     this.router.navigate(['select-card']);
   }
 
+  goToRegisterAdmin(): void {
+    this.router.navigate(['register-user-admin']);
+  }
+
   cancel(): void {
     this.router.navigate(['card']);
   }

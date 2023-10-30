@@ -5,7 +5,7 @@
                 <mat-card-title><h1>Register User <mat-icon class="login-icon">app_registration</mat-icon></h1></mat-card-title>
                
             </mat-card-header>
-            <form (submit)="onRegister()" #registerForm="ngForm">
+            <form (submit)="onRegisterAdmin()" #registerForm="ngForm">
                 <mat-card-content>
                     <div class="example-container">
                         <mat-form-field>
@@ -23,6 +23,9 @@
                         <mat-form-field>
                             <input matInput placeholder="Enter your password" name="password" [(ngModel)]="user.password" [type]="hide ? 'password' : 'text'">
                             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="User Role" name="userRole" [(ngModel)]="user.userRole">
                         </mat-form-field>
                     </div>
                 </mat-card-content>
