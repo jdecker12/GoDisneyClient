@@ -3,6 +3,7 @@ import { DataService } from '../../service/data.service';
 import { Card} from '../../models/card';
 import { FormControl, Validators, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-select-card',
@@ -28,6 +29,16 @@ export class SelectCardComponent implements OnInit {
   public imageSelected:boolean = false;
   public uploadMssg: string  = "";
   public action: string = "";
+
+  // subscritptions
+
+  private imageSubscription!:Subscription;
+  private loadCardsSubscription!:Subscription;
+  private updateCArdSubscription!:Subscription;
+  private saveCardSubscription!: Subscription;
+  private deleteCardSubscription!: Subscription;
+  private uploadImageSubscription!:Subscription;
+  private selectByNameSubscritption!:Subscription;
  
 
   updateCardForm!: FormGroup;
@@ -58,7 +69,7 @@ export class SelectCardComponent implements OnInit {
           this.router.navigate(['/login']);
         } 
     }
-      this.data.getImageList()
+     this.imageSubscription = this.data.getImageList()
       .subscribe((success) => {
           if(success) {
              this.images  = success as Array<string>;
@@ -70,7 +81,7 @@ export class SelectCardComponent implements OnInit {
       });
 
       this.card = new Card();
-      this.data.loadCards()
+     this.loadCardsSubscription = this.data.loadCards()
           .subscribe((success: any) => {
               if (success) {
                   this.cards = this.data.cards;
@@ -111,9 +122,11 @@ export class SelectCardComponent implements OnInit {
 
   onSelected(imgName: string[]) {
       if(imgName[1] === '1') {
-          this.updateCardForm.patchValue({cardImg: imgName[0]})
+          this.updateCardForm.patchValue({cardImg: imgName[0]});
+          this.card.cardImg = imgName[0];
       }else {
-          this.updateCardForm.patchValue({cardImg3: imgName[0]})
+          this.updateCardForm.patchValue({cardImg3: imgName[0]});
+          this.card.cardImg3 = imgName[0];
       }
       
   }
@@ -130,7 +143,7 @@ export class SelectCardComponent implements OnInit {
 
   updateFormData(formValue: { cardContents: any[]; }) {
       formValue.cardContents = [formValue.cardContents];
-      this.data.updateCard(this.card.cardTitle, formValue)
+    this.updateCArdSubscription =  this.data.updateCard(this.card.cardTitle, formValue)
           .subscribe((success: any) => {
               if (success) {
                   this.card = new Card();
@@ -143,7 +156,7 @@ export class SelectCardComponent implements OnInit {
 
   saveFormData(formValue: { cardContents: any[]; }) {
       formValue.cardContents = [formValue.cardContents];
-      this.data.admin(formValue)
+    this.saveCardSubscription = this.data.admin(formValue)
           .subscribe((success: any) => {
               if (success) {
                   this.card = new Card();
@@ -161,7 +174,7 @@ export class SelectCardComponent implements OnInit {
 
   deleteSelectCard(): void {
       var name = this.updateCardForm.get('cardTitle')?.value;
-      this.data.deleteCard(name)
+     this.deleteCardSubscription = this.data.deleteCard(name)
           .subscribe((success: any) => {
               if (success) {
                   return true;
@@ -172,7 +185,7 @@ export class SelectCardComponent implements OnInit {
   }
 
   selectName(formValue: any) {
-      this.data.getCardByName(formValue)
+     this.selectByNameSubscritption = this.data.getCardByName(formValue)
           .subscribe((success: any) => {
               if (success) {
                   this.card = this.data.card;  
@@ -231,8 +244,8 @@ getFile(event: any) {
 
 uploadFile() {
     if (this.selectedFile) {       
-       this.formData.append('uploadFileInput', this.selectedFile as Blob);
-        this.data.uploadImage(this.formData).subscribe({
+     this.formData.append('uploadFileInput', this.selectedFile as Blob);
+       this.uploadImageSubscription = this.data.uploadImage(this.formData).subscribe({
         next: (response: ArrayBuffer) => {
             if (response.byteLength > 0) {
                 this.uploadMssg = 'Image uploaded successfully';
@@ -251,5 +264,15 @@ uploadFile() {
     }); 
     }
   }
+
+  ngOnDestroy():void {
+    this.imageSubscription.unsubscribe();
+    this.loadCardsSubscription.unsubscribe();
+   // this.updateCArdSubscription.unsubscribe();
+   // this.saveCardSubscription.unsubscribe();
+    //this.deleteCardSubscription.unsubscribe();
+    //this.uploadImageSubscription.unsubscribe();
+    //this.selectByNameSubscritption.unsubscribe();
+  };
 
 }

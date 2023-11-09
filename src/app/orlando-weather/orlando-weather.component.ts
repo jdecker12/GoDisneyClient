@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../service/data.service';
 import { OrlandoWeather, Main, Weather, Wind, Sys } from '../models/orlando-weather';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-orlando-weather',
@@ -22,9 +23,23 @@ export class OrlandoWeatherComponent implements OnInit {
    public iconColor: string='';
    public time: Sys= {} as Sys;
    public wind: Wind = {} as Wind;
+   private weatherInterval!: Subscription;
+  
 
   ngOnInit(): void {
     this.getWeather();
+  }
+
+  ngAfterViewInit(): void {
+   this.weatherInterval = interval(1 * 60 * 1000).subscribe({
+      next: () => {
+        this.getWeather();
+        console.log('weather updated!');
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
   getWeather() {
@@ -124,6 +139,10 @@ export class OrlandoWeatherComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.weatherInterval.unsubscribe();
   }
   
 }

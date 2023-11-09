@@ -60,12 +60,15 @@ h1, h3 {
     .inline-container {
         justify-content: left;
         border: 2px solid $d-dark;
-        width: 33%;
+        width: 25%;
         min-height: 180px;
         padding: 15px;
         margin-bottom: 20px;
         h3{
             display: block;
+        }
+        .mat-button {
+            justify-content: end;
         }
     }
 
@@ -95,6 +98,13 @@ h1, h3 {
     min-width: 0;
     margin-bottom: 3.5rem;
     box-sizing: border-box;
+
+    .admin-actions {
+        flex-wrap: wrap;
+        .inline-container {
+            width: 100%;
+        }
+    }
     }
 }
 

@@ -44,7 +44,7 @@ export class RegisterUserAdminComponent implements OnInit {
   }
 
   cancel(): void {
-    this.route.navigate(['/']);
+    this.route.navigate(['cms-email']);
   }
 
 }

@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Card, CardContent } from '../models/card';
 import { Contact } from '../models/contact';
 import { OrlandoWeather, Weather } from '../models/orlando-weather';
+
 import { UserKey } from '../models/userKey';
 import { environment } from 'src/environments/environment';
 import { RegisterUser } from '../models/register-user';
@@ -19,7 +20,7 @@ export class DataService {
 
   
   constructor(private http: HttpClient) { }
-
+   
   id: any;
 
   private token: string = "";
@@ -55,6 +56,8 @@ export class DataService {
           'Authorization': 'Bearer' + this.token
       })
   };
+
+
 
   loadCards(): any{
       return this.http.get(apiUrl + "/api/cards/GetAllCards")
@@ -96,12 +99,12 @@ export class DataService {
           }));
   }
 
-  getCardByName(name: string): Observable<boolean> {
+  getCardByName(name: string): Observable<Card> {
      return this.http.get(apiUrl + "/api/cards/GetCardByName/" + name)
           .pipe(
           map((data: any) => {
               this.card = data;
-              return true;
+              return this.card;
           }));
   }
 
@@ -154,7 +157,6 @@ export class DataService {
     return this.http.get(`${apiUrl}/api/Auth/ValidateToken/${token}`)
     .pipe(
         map((data: any) => {
-            console.log(data);
             this.token = token;
             return true;
         })
@@ -165,7 +167,6 @@ export class DataService {
     return this.http.post(`${apiUrl}/api/Auth/RegisterUser`, user)
     .pipe(
         map((data: any) => {
-            console.log(data);
             this.user = user;
             return true;
         })

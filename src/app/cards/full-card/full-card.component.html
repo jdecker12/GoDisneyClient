@@ -1,7 +1,7 @@
 <div id="full-card" class="flex-container">
     <div class="flex-container-col">
         <mat-card class="go-dis-card mat-elevation-z13 fade-in">
-            <div *ngIf="!!card.cardImg3; else defaultImage">
+            <div *ngIf="hasCardImgThree; else defaultImage">
                 <img mat-card-image src="../../../assets/img/{{card.cardImg3}}" [alt]="card.cardTitle">
             </div>
             <ng-template #defaultImage>
@@ -20,7 +20,7 @@
                 <a href="https://{{card.cardLink}}" target="_blank">{{card.cardLinkName}}</a>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-fab [routerLink]="['/card']"><mat-icon>add</mat-icon></button>
+                <button mat-fab (click)="goBackToList()"><mat-icon>add</mat-icon></button>
             </mat-card-actions>
         </mat-card>
     </div>

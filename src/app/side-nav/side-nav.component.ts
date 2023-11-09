@@ -90,12 +90,10 @@ ngAfterViewInit(): void {
        return false;
     }
 
-    get isLoaded(): boolean {
-        const imageElements = document.getElementsByTagName('img').length;
-        console.log(imageElements);
-
-        return (this.cardData.length >= imageElements) || imageElements == 1;
-      }
+    // get isLoaded(): boolean {
+    //     const imageElements = document.getElementsByTagName('img').length;
+    //     return (this.cardData.length >= imageElements) || imageElements == 1;
+    //   }
 
       get isSpecificElementPresent(): boolean {
         const selector = 'mat-card#card-1.mat-card.mat-focus-indicator.go-dis-card.mat-elevation-z13.fade-in.first-card';

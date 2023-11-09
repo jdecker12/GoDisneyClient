@@ -1,6 +1,6 @@
-import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, NgZone, OnInit, Renderer2 } from '@angular/core';
 import { DataService } from '../../service/data.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 import { Card } from '../../models/card';
 import { Subscription } from 'rxjs';
@@ -13,14 +13,16 @@ import { Subscription } from 'rxjs';
 export class CardComponent implements OnInit {
 
   public initAnimation: boolean = false;
+  public themParkData: [] = [];
 
-  constructor(private data: DataService, private router: Router, private renderer: Renderer2) { }
+  constructor(private data: DataService, private router: Router, private renderer: Renderer2, private route: ActivatedRoute, private ngzone: NgZone) { }
   public cards: Card[] = [];
   private page: number = 1;
   private pageSize: number = 3;
   private isLoading: boolean = false;
   private cardSubscription!: Subscription;
   private routerEventsSubscription!: Subscription;
+  public cardId!: string;
 
   ngOnInit(): void {
     this.routerEventsSubscription = this.router.events.subscribe(event => {
@@ -40,6 +42,8 @@ export class CardComponent implements OnInit {
     }, 1000);
     this.animateOnScroll();
   }//end onInit
+
+
 
   animateOnScroll(): void {
     var myWindow = document.getElementById('mat-sidenav-content');

@@ -12,9 +12,15 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                     <img src="../../assets/img/{{c.cardImg}}" />
-               <span *ngFor="let x of c.cardContents">
+               <!-- <span *ngFor="let x of c.cardContents">
                    <p>{{ x.paraOne }}</p>
-               </span>
+               </span> -->
+               <ul *ngFor="let x of c.cardContents">
+                    <li>{{ x.paraOne }}</li>
+                    <li *ngIf="x.paraTwo">{{ x.paraTwo }}</li>
+                    <li *ngIf="x.paraThree">{{ x.paraThree }}</li>
+                    <li *ngIf="x.paraFour">{{ x.paraFour }}</li>
+               </ul>
             </mat-expansion-panel>
         </span>
     </mat-accordion>

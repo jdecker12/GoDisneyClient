@@ -6,6 +6,18 @@ div#news-feed {
     div#news-heading-container {
         margin-bottom: 10px;
     }
+    ul {
+        padding-inline-start: 20px;
+        li {
+            list-style-type: circle;
+            font-size:x-small;
+        }
+        li::first-line {
+            font-size: small;
+            color: $d-dark;
+            text-decoration: underline;
+        }
+    }
 
     h2 {
         font-size: 1.5rem;

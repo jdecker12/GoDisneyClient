@@ -98,19 +98,19 @@ div#gdb-hero {
                 color: #fff;
             }
             span#clr-change1 > .mat-mini-fab {
-                background-color: $icon-yellow;
+                background-image: $after-gradient;
             }
 
             span#clr-change2 > .mat-mini-fab {
-                background-color: $icon-red;
+                background-image: $after-gradient;
             }
 
             span#clr-change3 > .mat-mini-fab {
-                background-color: $icon-green;
+                background-image: $after-gradient;
             }
 
             span#clr-change4 > .mat-mini-fab {
-                background-color: $icon-blue;
+                background-image: $after-gradient;
             }
 
             > a {
