@@ -4,7 +4,7 @@
             <mat-list role="list">
                 <h3><mat-icon>explore</mat-icon> Navigation</h3>
                 <div *ngIf="card$ | async as card">
-                    <mat-list-item role="listitem" *ngFor="let c of card"><mat-icon>{{c.cardIcon}}</mat-icon><a [routerLink]="['/', c.cardTitle]" routerLinkActive="active"> {{c.cardTitle}}</a></mat-list-item>
+                    <mat-list-item role="listitem" *ngFor="let c of card; index as i"><mat-icon>{{c.cardIcon}}</mat-icon><a [routerLink]="['/', c.cardTitle, i]" routerLinkActive="active"> {{c.cardTitle}}</a></mat-list-item>
                 </div>
             </mat-list>
         </div>
