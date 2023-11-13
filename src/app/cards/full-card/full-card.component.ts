@@ -10,50 +10,60 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./full-card.component.scss']
 })
 export class FullCardComponent implements OnInit {
-  private fullCardSubscription!: Subscription;
   private routeParamsubscription!: Subscription;
 
   constructor(private data: DataService, private route: ActivatedRoute, private router: Router) { }
 
   public card!: Card;
-  public cardId!: number;
+  //public cardId!: number;
   public hasCardImgThree:boolean = false;
+  private cardName!: string;
 
   ngOnInit() {
     this.routeParamsubscription = this.route.params.subscribe(params => {
-      let id = params['id'];
-      let cardid = parseInt(params['i']) + 1;
-      this.cardId = cardid;
-      this.card = this.data.getCardById(id)!;
-      if (this.card == undefined) {
-        this.getCardOnRefresh(id);
-      }
+      this.cardName = params['cardName'];
+      this.getCard(params['cardName']);
     });
 
+    this.card = this.data.card;
+
+    if (this.card == undefined) {
+      this.getCardOnRefresh(this.cardName);
+    }
     this.hasCardImg3();
+  }///end ngOnInit
+
+  // functions//////////////////////////
+  getCard(cardName: string ): any {
+    return this.data.getCardByName(cardName).subscribe({
+      next: (response) => {
+        this.card = response;
+      }, 
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
-
   hasCardImg3(): boolean {
-    return (this.card !== undefined && this.card.cardImg3 !== null) ? this.hasCardImgThree = true : this.hasCardImgThree = false; 
+    this.hasCardImgThree = (this.card !== undefined && this.card.cardImg3 !== undefined) ? this.hasCardImgThree = true : this.hasCardImgThree = false; 
+    return this.hasCardImgThree;
   }
 
   getCardOnRefresh(x: string) {
-   this.fullCardSubscription = this.data.getCardByName(x)
+    this.data.getCardByName(x)
       .subscribe(success => {
         if (success) {
           console.log(success);
-          this.card = this.data.card;
+          this.card = success;
         }
       });
   }
 
-// In FullCardComponent
-goBackToList() {
-  console.log('cardId ' + this.cardId);
-  this.router.navigate(['/card'], { queryParams: { selectedCardId: this.cardId } });
-}
 
+goBackToList() {
+  this.router.navigate(['/card']);
+}
 
   ngOnDestroy(): void {
     this.routeParamsubscription.unsubscribe();

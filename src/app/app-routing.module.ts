@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'select-card', component: SelectCardComponent, canActivate: [RoleGuard], data: {roles: ['Admin']} },
   { path: 'manage-messages', component: ManageMessagesComponent, canActivate: [RoleGuard], data: {roles: ['Admin']} },
   { path: 'cms-email', component: CmsEmailComponent },
-  { path: ':id/:i', component: FullCardComponent }, 
+  { path: ':cardName', component: FullCardComponent }, 
   { path: '**', redirectTo: 'card' }
 ]
 
