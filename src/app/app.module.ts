@@ -32,6 +32,7 @@ import { CmsEmailComponent } from './cms-email/cms-email.component';
 import { ManageMessagesComponent } from './manage-messages/manage-messages.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { RegisterUserAdminComponent } from './register-user-admin/register-user-admin.component';
+import { VideoWidgetComponent } from './video-player/video-widget.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { RegisterUserAdminComponent } from './register-user-admin/register-user-
     CmsEmailComponent,
     ManageMessagesComponent,
     RegisterUserComponent,
-    RegisterUserAdminComponent
+    RegisterUserAdminComponent,
+    VideoWidgetComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,10 +71,10 @@ import { RegisterUserAdminComponent } from './register-user-admin/register-user-
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   
-  providers: [DataService],
+  providers: [DataService,],
   entryComponents: [BtmSheetComponent, BottomSheetOverviewExampleSheet],
   bootstrap: [AppComponent]
 })

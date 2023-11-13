@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /private/
+Disallow: /restricted/
+
+User-agent: Googlebot
+Allow: /public/
+Disallow: /images/
+
+Sitemap: https://www.godisneyblog.com/sitemap.xml
