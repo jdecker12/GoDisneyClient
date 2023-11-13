@@ -1,25 +1,9 @@
 <div class="video-widget">
-    <h4><mat-icon>movie</mat-icon> Video's</h4>
+    <h4><mat-icon>movie</mat-icon> Video's (short clips)</h4>
 
     <div *ngFor="let vid of playList" (click)="selectVideo(vid['snippet']['resourceId']['videoId'])" class="thumbnail-wrapper">
         <div class="thumbnail">
             <img [src]="vid['snippet']['thumbnails']['default']['url']" />
         </div>
     </div>
-    <!-- <div class="thumbnail-wrapper">
-        Video Two
-        <div class="thumbnail"></div>
-    </div>
-    <div class="thumbnail-wrapper">
-        Video Three
-        <div class="thumbnail"></div>
-    </div>
-    <div class="thumbnail-wrapper">
-        Video four
-        <div class="thumbnail"></div>
-    </div>
-    <div class="thumbnail-wrapper">
-        Video Five
-        <div class="thumbnail"></div>
-    </div> -->
 </div>
