@@ -45,13 +45,7 @@ export class VideoWidgetComponent implements OnInit {
     this.ytube.getChannelVideos(this.apiKey, this.playlistId)
     .subscribe({
       next: (response) => {
-        console.log(response.items);
-
         this.playList = response.items;
-        if (this.playList != undefined) {
-          console.log(response.items[0].snippet.thumbnails.maxres);
-        }
-        
       },
       error: (err) => {
         console.log(err);
@@ -60,7 +54,6 @@ export class VideoWidgetComponent implements OnInit {
   }
 
   selectVideo(movieName:string): void {
-    console.log(movieName);
     this.chosenMovie.emit(movieName);
   }
 

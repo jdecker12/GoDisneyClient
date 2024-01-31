@@ -39,7 +39,7 @@ export class CardComponent implements OnInit {
         var crdArr = Array.from(cards);
         crdArr[0].classList.add('first-card');
       }
-    }, 1000);
+    },1500);
     this.animateOnScroll();
   }//end onInit
 

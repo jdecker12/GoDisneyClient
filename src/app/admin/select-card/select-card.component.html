@@ -5,7 +5,7 @@
         </mat-card-header>
         <form  [formGroup]="updateCardForm" (submit)="(isChecked == 'update') ? updateFormData(updateCardForm.value) : saveFormData(updateCardForm.value)">
 
-            <mat-card-content>
+            <mat-card-content [ngClass]="">
                 <h3>What would you like to do?</h3>
                 <div class="example-container">
                 <mat-radio-group formControlName="radioGroup" aria-label="Select an option" (change)="getRadioVal()">

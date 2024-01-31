@@ -43,6 +43,8 @@ $after-gradient2: radial-gradient(circle, #e2f1f8, #c9d7de, #b0bec5, #98a6ad, #8
 
 $blue-radial-gradient: radial-gradient(circle, #266b95, #1e6089, #15557e, #0a4a72, #004067);
 
+$right-aside-gradient: linear-gradient(to right top, #266b95, #1e6089, #15557e, #0a4a72, #004067);
+
 $footer-clr: #616161;
 $footer-ltr: #7B7B7B;
 $disney-gold: #cfcda6;
@@ -77,6 +79,8 @@ $button-font: #fff;
 
 $gutters-main: 1rem 7rem;
 
-$shadow: 0 2px 6px 3px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+$shadow: 0 2px 6px 3px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.12);
 
 $shadow-footer: 0 1px 3px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.2);
+
+$thumbnail-shadow: 0px 4px 6px 6px rgba(240, 231, 231, 0.2), 0 1px 1px 0 rgba(240, 231, 231, 0.2), 0 1px 1px 0px rgba(240, 231, 231, 0.2);

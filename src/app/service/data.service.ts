@@ -47,6 +47,7 @@ export class DataService {
   public imgArr: {} = [];
   public image: any;
   public testResult: any;
+  public hasCardImg3:boolean = false;
 
   
 
@@ -95,6 +96,9 @@ export class DataService {
           .pipe(
           map((data: any) => {
               this.card = data;
+              if (data.cardImg3) {
+                this.hasCardImg3 = true;
+              }
               return true;
           }));
   }
@@ -104,7 +108,10 @@ export class DataService {
           .pipe(
           map((data: any) => {
               this.card = data;
-              return this.card;
+              if(data.cardImg3){
+                this.hasCardImg3 = true;
+              }
+              return data;
           }));
   }
 

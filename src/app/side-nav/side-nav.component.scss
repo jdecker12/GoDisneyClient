@@ -148,7 +148,7 @@
     }
     overflow-y:visible;
     height: 100%;
-    margin-bottom: 80px;
+  //  margin-bottom: 80px;
 }
 
 div#main-content {
@@ -166,6 +166,7 @@ div#main-content {
 @media(max-width: '720px') {
     #aside-container {
         width: 100%;
+        padding:0%;
     }
     #main-wrapper {
         width: 100%;
@@ -178,7 +179,7 @@ div#main-content {
     }
     #aside-container {
         width: 79%;
-        margin-bottom: 200px;
+        //margin-bottom: 200px;
     }
 
     div#main-content {

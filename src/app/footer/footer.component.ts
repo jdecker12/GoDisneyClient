@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, NgZone } from '@angular/core';
 import { DataSource } from '@angular/cdk/table';
 import { DataService } from '../service/data.service';
 import { Observable } from 'rxjs';
@@ -9,9 +9,9 @@ import { Card } from '../models/card';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, AfterViewInit {
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private elementRef: ElementRef, private ngZone: NgZone) { }
 
   card$!: Observable<Card[]>;
 
@@ -24,6 +24,16 @@ export class FooterComponent implements OnInit {
       this.card$ = this.data.loadCardsByCategory('Main');
       this.privacy = document.getElementById('privacy');
       this.terms = document.getElementById('terms');
+  }
+
+  ngAfterViewInit(): void {
+
+    
+       const myelem = this.elementRef.nativeElement;
+        console.log(myelem);
+       
+
+
   }
 
 }

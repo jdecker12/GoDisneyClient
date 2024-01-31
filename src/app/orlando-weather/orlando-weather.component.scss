@@ -1,5 +1,7 @@
+@import '../variables';
+
 #weather {
-    background-image: linear-gradient(to right top, #266b95, #1e6089, #15557e, #0a4a72, #004067);
+    background-image: $right-aside-gradient;
     height: 15rem;
     min-width: 350px;
     color: honeydew;

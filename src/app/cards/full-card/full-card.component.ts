@@ -15,29 +15,46 @@ export class FullCardComponent implements OnInit {
   constructor(private data: DataService, private route: ActivatedRoute, private router: Router) { }
 
   public card!: Card;
-  //public cardId!: number;
   public hasCardImgThree:boolean = false;
   private cardName!: string;
+
+  public test: boolean = this.data.hasCardImg3;
 
   ngOnInit() {
     this.routeParamsubscription = this.route.params.subscribe(params => {
       this.cardName = params['cardName'];
-      this.getCard(params['cardName']);
+      this.data.getCardByName(this.cardName)
+      .subscribe({
+        next: (response) => {
+          this.card = response;
+          if (response.cardImg3 !== ''){
+            this.hasCardImgThree = true;
+          }
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+      
     });
-
+    console.log(this.test + 'test is here');
     this.card = this.data.card;
 
     if (this.card == undefined) {
       this.getCardOnRefresh(this.cardName);
     }
-    this.hasCardImg3();
+   
   }///end ngOnInit
 
   // functions//////////////////////////
   getCard(cardName: string ): any {
-    return this.data.getCardByName(cardName).subscribe({
+    this.data.getCardByName(cardName).subscribe({
       next: (response) => {
-        this.card = response;
+       this.card = response;
+        if (this.card.cardImg3) {
+        this.hasCardImgThree = true;
+        }
+        return response;
       }, 
       error: (err) => {
         console.log(err);
@@ -45,17 +62,14 @@ export class FullCardComponent implements OnInit {
     });
   }
 
-  hasCardImg3(): boolean {
-    this.hasCardImgThree = (this.card !== undefined && this.card.cardImg3 !== undefined) ? this.hasCardImgThree = true : this.hasCardImgThree = false; 
-    return this.hasCardImgThree;
-  }
-
-  getCardOnRefresh(x: string) {
-    this.data.getCardByName(x)
+  getCardOnRefresh(x: string): any {
+    return this.data.getCardByName(x)
       .subscribe(success => {
         if (success) {
-          console.log(success);
           this.card = success;
+          if(this.card.cardImg3){
+            this.hasCardImgThree = true;
+          }
         }
       });
   }
